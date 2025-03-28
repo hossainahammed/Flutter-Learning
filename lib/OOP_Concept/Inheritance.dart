@@ -25,10 +25,15 @@ class Son extends Father{
   }
   Son(this.sonName):super('Rahim');
 
+  getFatherIncomeSource(){
+
+    super.incomeSource();
+  }
 }
 
 void main() {
   Son Rifat = Son('Rifat');
+
 
   print(Rifat.land); // Prints: 100 bigha
   print(Rifat.hou);  // Prints: Tin basa
@@ -37,6 +42,7 @@ void main() {
   Rifat.land = '150 bigha';
   Rifat.hou = 'chader basha';
   Rifat.incomeSource();
+  Rifat.getFatherIncomeSource();
 
   print(Rifat.land); // Prints: 150 bigha
   print(Rifat.hou);  // Prints: chader basha
