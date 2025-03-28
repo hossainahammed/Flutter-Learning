@@ -19,6 +19,10 @@ class Father {
 
 class Son extends Father{
   String sonName;
+  @override
+  incomeSource() {
+    print('App Developer');
+  }
   Son(this.sonName):super('Rahim');
 
 }
@@ -32,6 +36,7 @@ void main() {
   // Modifying the properties
   Rifat.land = '150 bigha';
   Rifat.hou = 'chader basha';
+  Rifat.incomeSource();
 
   print(Rifat.land); // Prints: 150 bigha
   print(Rifat.hou);  // Prints: chader basha
