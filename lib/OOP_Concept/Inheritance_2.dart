@@ -1,5 +1,5 @@
-abstract class Animal{
-  String name;
+abstract class Animal{ //by using abstract we cannot call or create a class method,variable or object.
+  String name;         //Tokhn extend use kore korte hbe .
   static var test = 'This is animal class';
   Animal(this.name);
 
