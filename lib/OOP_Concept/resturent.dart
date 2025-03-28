@@ -18,4 +18,9 @@ class Resturant{
 
   // getter method for access private value of a class instance
   int get resturantId =>_id;
+
+  //setter method
+set setId(int value){
+  _id=value;
+}
 }
