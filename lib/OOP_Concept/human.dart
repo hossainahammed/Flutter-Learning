@@ -4,15 +4,15 @@ class Human {
   late String color;
   int eye = 2;
   String ? name;
-  static String className = 'Human class';
+  static String className = 'Human class'; //Object toiri na korei globally amra access korte pari.
 
   moving(){
     print('$name is moving');
   }
   eating(){
-    print('$name is moving');
+    print('$name is eating');
   }
-  static sleep (){
+  static sleep (){  //Object toiri na korei globally amra access korte pari.
     print('human is sleeping ');
   }
 }
