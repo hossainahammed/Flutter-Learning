@@ -1,9 +1,8 @@
 class student{
-  String name;
-  student(this.name);
+
 
   attendClass(){
-    print('$name Joined class');
+    print('Joined class');
 
   }
    examSubmit(){
@@ -13,12 +12,12 @@ class student{
 
 class person extends student{
   String name;
-  person(this.name) : super('Rana');
+  person(this.name) ;
 
 
 }
 
 main(){
-  person rafi =person('Rafi');
+  student rafi =student();
   rafi.attendClass();
 }
