@@ -32,6 +32,14 @@ class Home extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
+            Icon(Icons.add),
+            IconButton(onPressed:(){
+              print("Item deleted");
+            },
+                icon:Icon(Icons.delete)),
+            TextButton(onPressed: (){
+              print("clicked me from text button");
+            }, child: Text("Click me",style: TextStyle(color: Colors.cyan,fontSize: 30,fontWeight: FontWeight.bold),),),
             Text("This is row ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: Colors.purple),),
             SizedBox(
               width: 10,
