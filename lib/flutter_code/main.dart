@@ -10,7 +10,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(title: 'First app', home: Home());
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+        title: 'First app', home: Home());
   }
 }
 
@@ -32,7 +34,14 @@ class Home extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Icon(Icons.add),
+            InkWell(
+              onTap: (){
+
+              },
+                onDoubleTap: (){
+
+                },
+                child: Icon(Icons.add)),
             IconButton(onPressed:(){
               print("Item deleted");
             },
