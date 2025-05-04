@@ -34,7 +34,7 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.purple,
       ),
       body: Text("This is body text",style:TextStyle(
-        fontSize: 30,
+        fontSize: 50,
         fontWeight: FontWeight.bold,
         color: Colors.orange,
 
