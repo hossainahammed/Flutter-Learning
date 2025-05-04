@@ -34,12 +34,13 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.purple,
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
        children:[
-         Text("This is Column text",style:TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.orange,),),
-         Text("This is Column text",style:TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.orange,),),
-         Text("This is Column text",style:TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.orange,),),
-         Text("This is Column text",style:TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.orange,),),
-         Text("This is Column text",style:TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.orange,),),
+         Text("This is Column text",style:TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.orange,),),
+         Text("This is Column text",style:TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.orange,),),
+         Text("This is Column text",style:TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.orange,),),
+         Text("This is Column text",style:TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.orange,),),
+         Text("This is Column text",style:TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.orange,),),
 
 
        ],
