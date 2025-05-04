@@ -29,12 +29,21 @@ class Home extends StatelessWidget {
       body:SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
-          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text("This is row ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: Colors.purple),),
+            SizedBox(
+              width: 10,
+            ),
             Text("This is row ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: Colors.purple),),
+            SizedBox(
+              width: 10,
+            ),
             Text("This is row ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: Colors.purple),),
+            SizedBox(
+              width: 10,
+            ),
             Text("This is row ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: Colors.purple),),
             Text("This is row ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: Colors.purple),),
             Text("This is row ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: Colors.purple),),
