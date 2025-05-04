@@ -33,14 +33,17 @@ class Home extends StatelessWidget {
         ],
         backgroundColor: Colors.purple,
       ),
-      body: Text("This is body text",style:TextStyle(
-        fontSize: 50,
-        fontWeight: FontWeight.bold,
-        color: Colors.orange,
+      body: Column(
+       children:[
+         Text("This is Column text",style:TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.orange,),),
+         Text("This is Column text",style:TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.orange,),),
+         Text("This is Column text",style:TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.orange,),),
+         Text("This is Column text",style:TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.orange,),),
+         Text("This is Column text",style:TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.orange,),),
 
 
-      ),),
-
+       ],
+      )
     );
   }
 }
