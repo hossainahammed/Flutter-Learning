@@ -26,197 +26,23 @@ class Home extends StatelessWidget {
         actions: [],
         backgroundColor: Colors.purple,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      body:SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
-            Text(
-              "This is Column text",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
-            ),
+            Text("This is row ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: Colors.purple),),
+            Text("This is row ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: Colors.purple),),
+            Text("This is row ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: Colors.purple),),
+            Text("This is row ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: Colors.purple),),
+            Text("This is row ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: Colors.purple),),
+            Text("This is row ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: Colors.purple),),
+            Text("This is row ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,color: Colors.purple),),
           ],
         ),
-      ),
+      )
+
     );
   }
 }
