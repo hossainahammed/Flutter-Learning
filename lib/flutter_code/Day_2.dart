@@ -14,6 +14,27 @@ class Day_2 extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.purple,
       ),
+      body: Center(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.cyan,
+                foregroundColor: Colors.red,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                )
+        ),
+                onPressed: () {
+              print("Button Clicked");
+
+            }, child: Text("Button"))
+          ],
+        ),
+      ),
 
     );
   }
