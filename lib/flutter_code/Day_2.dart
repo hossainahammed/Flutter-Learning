@@ -33,6 +33,12 @@ class Day_2 extends StatelessWidget {
 
             }, child: Text("Button")),
             OutlinedButton(onPressed: () {}, child: Text('Outlined button' )),
+            GestureDetector(
+              onTap: (){
+                print("Text clicked");
+              },
+              child: Text("Gesture Detector Text "),
+            )
 
           ],
         ),
