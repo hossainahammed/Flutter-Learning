@@ -7,7 +7,8 @@ class Day_2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       //backgroundColor: Colors.teal[300],//opacity apply
-      backgroundColor: Colors.red.withOpacity(1),//opacity apply
+     // backgroundColor: Colors.red.withOpacity(1),//opacity apply
+      backgroundColor: Colors.greenAccent.shade100,//opacity apply
       appBar: AppBar(
         title: Text("Day_2"),
         centerTitle: true,
