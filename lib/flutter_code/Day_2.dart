@@ -6,9 +6,9 @@ class Day_2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Colors.teal[300],//opacity apply
+      backgroundColor: Colors.purpleAccent[300],//opacity apply
      // backgroundColor: Colors.red.withOpacity(1),//opacity apply
-      backgroundColor: Colors.greenAccent.shade100,//opacity apply
+      //backgroundColor: Colors.greenAccent.shade100,//opacity apply
       appBar: AppBar(
         title: Text("Day_2"),
         centerTitle: true,
@@ -22,7 +22,7 @@ class Day_2 extends StatelessWidget {
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.cyan,
+                backgroundColor: Colors.cyan,
                 foregroundColor: Colors.red,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -31,7 +31,9 @@ class Day_2 extends StatelessWidget {
                 onPressed: () {
               print("Button Clicked");
 
-            }, child: Text("Button"))
+            }, child: Text("Button")),
+            OutlinedButton(onPressed: () {}, child: Text('Outlined button' )),
+
           ],
         ),
       ),
