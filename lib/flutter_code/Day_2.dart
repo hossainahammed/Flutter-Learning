@@ -46,7 +46,7 @@ class Day_2 extends StatelessWidget {
       floatingActionButton: FloatingActionButton(onPressed: (){
         print(Text("Floating action button "));
       },
-        child: Icon(Icons.access_alarm_rounded),
+        child: Icon(Icons.add),
         backgroundColor:Colors.cyan,
       ),
 
