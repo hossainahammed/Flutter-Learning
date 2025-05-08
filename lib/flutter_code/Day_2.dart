@@ -57,6 +57,13 @@ class Day_2 extends StatelessWidget {
                 obscureText: true,//For hide input character,we use it for pasword .
                 decoration: InputDecoration(
                   hintText: "Enter yor number",
+                  labelText: 'Phone number',
+                  prefixIcon: Icon(Icons.phone),
+                  suffixIcon: Icon(Icons.check),
+                  labelStyle: TextStyle(
+                    color: Colors.green,
+                    fontSize: 20,
+                  ),
                   border:  OutlineInputBorder()
                 ),
               ),
