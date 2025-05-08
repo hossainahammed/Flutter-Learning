@@ -58,7 +58,7 @@ class Day_2 extends StatelessWidget {
                   controller: PhoneController,
           
                 keyboardType: TextInputType.phone,
-                  obscureText: true,//For hide input character,we use it for pasword .
+                  obscureText: false,//For hide input character,we use it for pasword .
                   decoration: InputDecoration(
                     hintText: "Enter yor number",
                     labelText: 'Phone number',
@@ -77,8 +77,27 @@ class Day_2 extends StatelessWidget {
                 height: 20,
               ),
               ElevatedButton(onPressed: (){
-                print(PhoneController.text);
+
+                if(PhoneController.text.isEmpty){
+                  print("Please Enter your number");
+
+                }
+                else if(PhoneController.text.length <11 ){
+                  print("Please Enter Valid number");
+                }
+                else{
+                  print("Your number is ${PhoneController.text}");
+
+                }
               }, child: Text("Submit")),
+
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(onPressed: (){
+                PhoneController.clear();
+              }, child: Text('Clear')),
+
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(top: 60),
