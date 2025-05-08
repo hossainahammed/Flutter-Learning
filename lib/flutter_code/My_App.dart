@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Day_2.dart';
 import 'Home.dart';
+import 'form_login.dart';
 import 'main.dart';
 
 class MyApp extends StatelessWidget {
@@ -12,6 +13,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'First app',
         //home: Home()
-        home: Day_2());
+        home: Loginpage());
   }
 }
