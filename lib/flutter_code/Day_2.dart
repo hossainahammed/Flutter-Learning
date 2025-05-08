@@ -53,6 +53,8 @@ class Day_2 extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: TextField(
+
+                obscureText: true,//For hide input character,we use it for pasword .
                 decoration: InputDecoration(
                   hintText: "Enter yor name",
                   border:  OutlineInputBorder()
