@@ -50,7 +50,7 @@ class Day_2 extends StatelessWidget {
             ),
             Container(
               alignment: Alignment.center,
-              margin: EdgeInsets.only(top: 50),
+              margin: EdgeInsets.only(top: 100),
               padding: EdgeInsets.all(5),
               width: 200,
               height: 200,
