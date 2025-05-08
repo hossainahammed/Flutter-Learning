@@ -53,10 +53,10 @@ class Day_2 extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: TextField(
-
+              keyboardType: TextInputType.phone,
                 obscureText: true,//For hide input character,we use it for pasword .
                 decoration: InputDecoration(
-                  hintText: "Enter yor name",
+                  hintText: "Enter yor number",
                   border:  OutlineInputBorder()
                 ),
               ),
