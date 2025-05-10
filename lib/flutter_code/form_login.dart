@@ -25,6 +25,9 @@ class _LoginpageState extends State<Loginpage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              Image.network('https://www.freepnglogos.com/pics/logo-facebookpng#google_vignette'),
+
+
               Text('Login with your password'),
               SizedBox(
                 height: 20,
