@@ -25,6 +25,11 @@ class _LoginpageState extends State<Loginpage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              Image.asset(
+                'asset/images.png',
+                height: 250,
+                width: 250,
+              ),
               Image.network('https://www.freepnglogos.com/pics/logo-facebookpng#google_vignette'),
 
 
