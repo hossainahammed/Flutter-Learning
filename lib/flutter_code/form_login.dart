@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'home_page.dart';
+import 'listView.dart';
 
 class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
@@ -108,7 +109,17 @@ class _LoginpageState extends State<Loginpage> {
 
                         child: Text('Login'),
                       ),
+
+
                     ),
+                    ElevatedButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Listview()),);
+                    },style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                      Colors.blue, // Button background color
+                      foregroundColor: Colors.white, // Text/icon color
+                    ),
+                        child: Text('List'))
                   ],
                 ),
               ),
