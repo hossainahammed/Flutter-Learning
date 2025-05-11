@@ -8,6 +8,18 @@ class TodoApp extends StatefulWidget {
 }
 
 class _TodoAppState extends State<TodoApp> {
+  void _addTask(){
+    if(taskController.text.isNotEmpty){
+      setState(() {
+        _tasks.add(taskController.text);
+        taskController.clear();
+      });
+
+    }
+  }
+
+  List<String>_tasks = [];
+  TextEditingController taskController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,8 +39,21 @@ class _TodoAppState extends State<TodoApp> {
                    ),
                  )),
                 SizedBox(width: 10,),
-                ElevatedButton(onPressed: (){}, child: Text('ADd'))
-              ],
+                ElevatedButton(onPressed:_addTask, child: Text('Add'))]
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: _tasks.length,
+                  itemBuilder: (context,index){
+                  return Card(
+                    child: ListTile(
+                      title: Text(_tasks[index]),
+                      trailing: IconButton(onPressed: (){},
+                          icon: Icon(Icons.delete,color:Colors.red,)),
+                    ),
+                  );
+                  }
+              ),
             )
           ],
         ),
