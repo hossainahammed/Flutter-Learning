@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 
+import 'Home.dart';
+
 class Home_page extends StatelessWidget {
   const Home_page({super.key});
 
@@ -8,7 +10,7 @@ class Home_page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hello'),
+        title: Text('Home page'),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -20,7 +22,31 @@ class Home_page extends StatelessWidget {
                 child: Row(
                   children: [
 
+                  ElevatedButton(onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) =>Home()));
+                  },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue, // Button background color
+                        foregroundColor: Colors.white, // Text/icon color
+                      ),
 
+                      child: Text('Home')),
+
+
+                    SizedBox(
+                      width: 20,
+                    ),
+
+
+                    ElevatedButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) =>Home()));
+                    },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue, // Button background color
+                          foregroundColor: Colors.white, // Text/icon color
+                        ),
+
+                        child: Text('Back')),
 
                   ],
                 ),
