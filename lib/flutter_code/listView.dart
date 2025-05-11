@@ -15,9 +15,12 @@ class Listview extends StatelessWidget {
         itemBuilder: (context,index){
           return Card(
             child: ListTile(
+
               leading: Icon(Icons.phone),
               trailing: Icon(Icons.delete),
               title: Text("0176095403 $index"),
+              subtitle: Text("Hossain"),
+
             ),
           );
         },
