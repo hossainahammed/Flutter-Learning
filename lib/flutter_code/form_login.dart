@@ -100,8 +100,13 @@ class _LoginpageState extends State<Loginpage> {
                                SnackBar(content: Text('Login Successful')),
                              );
                            }
-                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home_page()),);
+                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home_page(name: 'Hossain',)),);
                          },
+                             style: ElevatedButton.styleFrom(
+                               backgroundColor: Colors.blue, // Button background color
+                               foregroundColor: Colors.white, // Text/icon color
+                             ),
+
                              child: Text('Login')))
                    ],
                  ),

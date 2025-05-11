@@ -1,10 +1,10 @@
 
 import 'package:flutter/material.dart';
-
 import 'Home.dart';
 
 class Home_page extends StatelessWidget {
-  const Home_page({super.key});
+  final String  name;
+  const Home_page({super.key, required this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +21,7 @@ class Home_page extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
+                    Text(name,style:TextStyle(fontSize: 30,color: Colors.green) ,),
 
                   ElevatedButton(onPressed: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) =>Home()));
