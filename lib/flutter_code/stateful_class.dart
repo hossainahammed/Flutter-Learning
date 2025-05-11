@@ -1,77 +1,109 @@
 import 'package:flutter/material.dart';
+import 'widget/cityCard.dart';
 
-class StatefulClass extends StatefulWidget {
-  const StatefulClass({super.key});
+class SateFullClass extends StatefulWidget {
+  const SateFullClass({super.key});
 
   @override
-  State<StatefulClass> createState() => _StatefulClassState();
+  State<SateFullClass> createState() => _SateFullClassState();
 }
 
-class _StatefulClassState extends State<StatefulClass> {
+class _SateFullClassState extends State<SateFullClass> {
   int counter = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Stateful class"),
-        backgroundColor: Colors.deepPurpleAccent,
-
+        centerTitle: true,
+        title: Text("Stateful Class",style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),),
+        backgroundColor: Colors.deepPurple,
       ),
+
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(counter.toString(),
-                style:TextStyle(
-                  fontSize: 50,
-                  color: Colors.deepPurpleAccent,
-                  
-                )
+              style: TextStyle(
+                fontSize: 70,
+                color: Colors.deepPurple,
+              ),
             ),
-            SizedBox(
-              height: 20,
-            ),
-            
+
+            SizedBox(height: 50,),
+
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: 180,
+                    width: 180,
                     child: ElevatedButton(onPressed: (){
                       setState(() {
                         counter++;
-                        print('Counter: $counter');
-
                       });
+
+
 
 
                     },style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue, // Button background color
                       foregroundColor: Colors.white, // Text/icon color
-                    ), child: Text("+",style: TextStyle(fontSize: 70,color: Colors.white),))),
+                    ),
+                        child: Text('+',style: TextStyle(
+                      fontSize: 40,
+                      color: Colors.white,
+                    ),))),
+                SizedBox(width: 10,),
                 SizedBox(
-                 width: 20,
-                ),
-                SizedBox(
-                    width: 150,
+                    width: 180,
                     child: ElevatedButton(onPressed: (){
                       setState(() {
                         counter--;
-                        print('Counter: $counter');
-
                       });
+                      print('counter: $counter');
 
-                    }, style: ElevatedButton.styleFrom(
+
+                    },style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue, // Button background color
                       foregroundColor: Colors.white, // Text/icon color
                     ),
-                        child: Text("-",style: TextStyle(fontSize: 70,color: Colors.white),))),
+                        child: Text('-',style: TextStyle(
+                      fontSize: 40,
+                      color: Colors.white,
+                    ),))),
               ],
-            )
+            ),
 
+
+
+            SizedBox(height: 50,),
+
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  cityCard(image: 'https://www.amny.com/wp-content/uploads/2022/08/GettyImages-523538287.jpg?quality=51', city: 'New York City ',),
+                  SizedBox(width: 10,),
+                  cityCard(image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYV3EfsaWMn0aXHxhb5FuXZlJWEbIjUPwSyg&s', city: 'Dhaka',),
+                  SizedBox(width: 10,),
+                  cityCard(image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReR9Uns1_rIDNosFY9z7YaB9lGyzOpfd8MXQ&s', city: 'maldives',),
+                  SizedBox(width: 10,),
+                ],
+              ),
+            )
           ],
         ),
       ),
     );
   }
 }
+

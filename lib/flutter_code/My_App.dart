@@ -15,6 +15,6 @@ class MyApp extends StatelessWidget {
         title: 'First app',
         //home: Home()
         // home: Loginpage());
-        home: StatefulClass());
+        home: SateFullClass());
   }
 }
