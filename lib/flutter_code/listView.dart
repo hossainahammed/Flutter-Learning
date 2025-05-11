@@ -13,10 +13,12 @@ class Listview extends StatelessWidget {
       body: ListView.builder(
         itemCount: 50,
         itemBuilder: (context,index){
-          return ListTile(
-            leading: Icon(Icons.phone),
-            trailing: Icon(Icons.delete),
-            title: Text("0176095403 $index"),
+          return Card(
+            child: ListTile(
+              leading: Icon(Icons.phone),
+              trailing: Icon(Icons.delete),
+              title: Text("0176095403 $index"),
+            ),
           );
         },
          )
