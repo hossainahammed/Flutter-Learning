@@ -100,7 +100,7 @@ class _LoginpageState extends State<Loginpage> {
                                SnackBar(content: Text('Login Successful')),
                              );
                            }
-                           Navigator.push(context, MaterialPageRoute(builder: (context) => Home_page()),);
+                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home_page()),);
                          },
                              child: Text('Login')))
                    ],

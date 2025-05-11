@@ -39,7 +39,7 @@ class Home_page extends StatelessWidget {
 
 
                     ElevatedButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) =>Home()));
+                      Navigator.pop(context);
                     },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue, // Button background color
