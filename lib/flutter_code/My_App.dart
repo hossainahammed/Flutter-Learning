@@ -5,6 +5,7 @@ import 'Day_2.dart';
 import 'Home.dart';
 import 'form_login.dart';
 import 'main.dart';
+import 'mediaQuery.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -17,7 +18,9 @@ class MyApp extends StatelessWidget {
         //home: Home()
         // home: Loginpage());
         // home: SateFullClass());
-        home: TodoApp());
+        // home: TodoApp());
+        home:MediaQury());
+
 
   }
 }
