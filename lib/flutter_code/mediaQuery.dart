@@ -13,17 +13,22 @@ class _MediaQuryState extends State<MediaQury> {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: Container(
-              width: screenSize.width*0.2,
-              height: screenSize.height*0.3,
-              color: Colors.red,
-            ),
-          )
-        ],
+      body: Container(
+        width: screenSize.width,
+        height: screenSize.height,
+        color: Colors.orangeAccent,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Container(
+                width: screenSize.width*0.2,
+                height: screenSize.height*0.3,
+                color: Colors.red,
+              ),
+            )
+          ],
+        ),
       ),
 
     );
