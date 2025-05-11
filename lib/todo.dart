@@ -18,7 +18,13 @@ class _TodoAppState extends State<TodoApp> {
     }
   }
 
-  List<String>_tasks = [];
+  void _deleteTask(int index){
+    setState(() {
+      _tasks.removeAt(index);
+    });
+  }
+
+  List<String> _tasks = [];
   TextEditingController taskController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -32,28 +38,32 @@ class _TodoAppState extends State<TodoApp> {
           children: [
             Row(
               children: [
-                 Expanded(child: TextField(
-                   decoration: InputDecoration(
-                     labelText: 'Enter Task',
-                     border: OutlineInputBorder()
-                   ),
-                 )),
+                Expanded(child: TextField(
+                  controller: taskController,
+                  decoration: InputDecoration(
+                      labelText: 'Enter task',
+                      border: OutlineInputBorder()
+                  ),
+                )),
                 SizedBox(width: 10,),
-                ElevatedButton(onPressed:_addTask, child: Text('Add'))]
+                ElevatedButton(onPressed:_addTask, child: Text('Add'))
+              ],
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: _tasks.length,
+
+                  itemCount: _tasks.length,
                   itemBuilder: (context,index){
-                  return Card(
-                    child: ListTile(
-                      title: Text(_tasks[index]),
-                      trailing: IconButton(onPressed: (){},
-                          icon: Icon(Icons.delete,color:Colors.red,)),
-                    ),
-                  );
-                  }
-              ),
+                    return Card(
+                      child: ListTile(
+                        title: Text(_tasks[index]),
+                        trailing: IconButton(
+                          onPressed: ()=> _deleteTask(index),
+                          icon: Icon(Icons.delete,color: Colors.red,),
+                        ),
+                      ),
+                    );
+                  } ),
             )
           ],
         ),
