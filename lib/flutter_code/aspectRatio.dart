@@ -28,7 +28,7 @@ class _aspect_ratioState extends State<aspect_ratio> {
 
             Text('This is responsive text',style: TextStyle(
 
-                fontSize: 30.sp
+                fontSize: 20.sp
             ),),
 
             FractionallySizedBox(
