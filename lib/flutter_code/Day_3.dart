@@ -15,6 +15,27 @@ class _Day_3State extends State<Day_3> {
       child: Scaffold(
         appBar: AppBar(
           title: Text('This is extra widget'),
+          bottom: TabBar(tabs: [
+            Tab(
+              icon: Icon(Icons.home),
+              text: 'Home',
+            ),
+            Tab(
+              icon: Icon(Icons.star),
+              text: 'Favourite',
+            ),
+            Tab(
+              icon: Icon(Icons.settings),
+              text: 'Settings',
+            ),
+          ]),
+        ),
+        body: TabBarView(
+          children: [
+            Center(child: Icon(Icons.home,size: 100,)),
+            Center(child: Icon(Icons.star,size: 100,)),
+            Center(child: Icon(Icons.settings,size: 100,)),
+          ],
         ),
         drawer: Drawer(
           child: ListView(
