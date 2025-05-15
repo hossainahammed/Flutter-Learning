@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'Day_3.dart';
 import 'aspectRatio.dart';
 
 
@@ -20,7 +21,8 @@ class MyApp1 extends StatelessWidget {
           home: child,
         );
       },
-      child: const aspect_ratio (),
+      //child: const aspect_ratio (),
+        child: const Day_3 (),
     );
   }
 
