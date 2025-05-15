@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'aspectRatio.dart';
 
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp1 extends StatelessWidget {
+  const MyApp1({super.key});
 
   @override
   Widget build(BuildContext context) {
