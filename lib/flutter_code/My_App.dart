@@ -3,6 +3,7 @@ import 'package:if_else_statement/flutter_code/stateful_class.dart';
 import '../todo.dart';
 import 'Day_2.dart';
 import 'Home.dart';
+import 'calculatorApp.dart';
 import 'form_login.dart';
 import 'main.dart';
 import 'mediaQuery.dart';
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
         // home: Loginpage());
         // home: SateFullClass());
         // home: TodoApp());
-        home:MediaQury());
+        //home:MediaQury());
+         home:CalculatorApp());
 
 
   }

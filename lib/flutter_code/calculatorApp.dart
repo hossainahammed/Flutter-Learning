@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../widget/buildButton.dart';
+import 'widget/buildButton.dart';
+
+//import '../widget/buildButton.dart';
+
 
 class CalculatorApp extends StatefulWidget {
   const CalculatorApp({super.key});

@@ -8,7 +8,7 @@ void main() {
   runApp(
       DevicePreview(
         enabled: false ,
-        builder: (context)=>MyApp1() ,
+        builder: (context)=>MyApp() ,
       )
   );
 
