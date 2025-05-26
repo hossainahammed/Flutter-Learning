@@ -10,6 +10,10 @@ class waterTracker extends StatefulWidget {
 class _waterTrackerState extends State<waterTracker> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return  Scaffold(
+      backgroundColor: Colors.blue.shade50,
+      appBar: AppBar(
+      title: Text('Water Tracke',style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),),);
+
   }
 }
