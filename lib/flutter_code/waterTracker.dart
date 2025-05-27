@@ -13,7 +13,34 @@ class _waterTrackerState extends State<waterTracker> {
     return  Scaffold(
       backgroundColor: Colors.blue.shade50,
       appBar: AppBar(
-      title: Text('Water Tracke',style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),),);
+      title: Text('Water Tracke',
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+      ),
+      ),
+      body: Column(
+        children: [
+          Container(
+            child: Column(
+              children: [
+                Text("Today's in Tank",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500
+                ),),
+                SizedBox( height: 10,),
+                Text('2000 ml',style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blueAccent,
+                ),
+              ],
+              
+
+            ),
+          )
+        ],
+      ),
+    );
 
   }
 }
