@@ -11,8 +11,8 @@ void main() {
       DevicePreview(
         enabled: false ,
         //builder: (context)=>MyApp1() ,
-        //builder: (context)=>MyApp() ,
-        builder: (context)=>waterTracker() ,
+        builder: (context)=>MyApp() ,
+        //builder: (context)=>waterTracker() ,
       )
   );
 

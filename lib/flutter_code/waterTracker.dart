@@ -13,7 +13,7 @@ class _waterTrackerState extends State<waterTracker> {
     return  Scaffold(
       backgroundColor: Colors.blue.shade50,
       appBar: AppBar(
-      title: Text('Water Tracke',
+      title: Text('Water Tracker App',
         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
       ),
       ),
@@ -25,7 +25,15 @@ class _waterTrackerState extends State<waterTracker> {
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(20)
+                borderRadius: BorderRadius.circular(20),
+                boxShadow:[
+                  BoxShadow(
+                      color:Colors.blue.withOpacity(0.2),
+                          blurRadius: 10,
+                    spreadRadius: 2,
+                  )
+
+                ]
               ),
               child: Column(
                 children: [
@@ -45,6 +53,17 @@ class _waterTrackerState extends State<waterTracker> {
                 ],
 
               ),
+            ),
+            Stack(
+              children: [
+                Container(
+                  height: 150,
+                  width: 150,
+                  child: CircularProgressIndicator(
+                    value: 0.2,
+                  ),
+                )
+              ],
             )
           ],
         ),

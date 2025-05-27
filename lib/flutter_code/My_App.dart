@@ -7,6 +7,7 @@ import 'calculatorApp.dart';
 import 'form_login.dart';
 import 'main.dart';
 import 'mediaQuery.dart';
+import 'waterTracker.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -21,7 +22,9 @@ class MyApp extends StatelessWidget {
         // home: SateFullClass());
         // home: TodoApp());
         //home:MediaQury());
-         home:CalculatorApp());
+         //home:CalculatorApp());
+         home:waterTracker());
+
 
 
   }
