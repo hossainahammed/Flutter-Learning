@@ -9,7 +9,7 @@ void main() {
 
   runApp(
       DevicePreview(
-        enabled: false ,
+        enabled: true,
         //builder: (context)=>MyApp1() ,
         builder: (context)=>MyApp() ,
         //builder: (context)=>waterTracker() ,
