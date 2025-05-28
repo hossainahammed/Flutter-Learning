@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Expense_modal.dart';
+
 class Expense_Tracker extends StatefulWidget {
   const Expense_Tracker({super.key});
 
@@ -16,6 +18,7 @@ class _Expense_TrackerState extends State<Expense_Tracker> {
     'Bills'
   ];
 
+  final List<Expense> _expense = [];
   double totall = 0.0;
 
   void _showForm(){
@@ -84,7 +87,7 @@ class _Expense_TrackerState extends State<Expense_Tracker> {
 
               ),
             )
-           // Text('Total: $total')
+          // Text('Total: $total',)
           ],
         ),
       ),
