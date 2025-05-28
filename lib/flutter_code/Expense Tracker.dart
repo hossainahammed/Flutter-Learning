@@ -47,7 +47,16 @@ class _Expense_TrackerState extends State<Expense_Tracker> {
               height: 15,
             ),
             DropdownButtonFormField(items: categories.map((category) => DropdownMenuItem(value: category,child: Text(category),)).toList(),
-                onChanged: (value) => selectedCategory = value!)
+                onChanged: (value) => selectedCategory = value!,
+            decoration: InputDecoration(labelText: 'Select any one'),),
+            SizedBox(
+              height: 20,
+            ),
+
+            SizedBox(
+                width:double.infinity,
+                child: ElevatedButton(onPressed: (){}, child: Text("Add Expense")))
+
 
           ],
         ),
@@ -60,8 +69,24 @@ class _Expense_TrackerState extends State<Expense_Tracker> {
       appBar: AppBar(
         title: Text("Expense Tracker"),
         actions: [
-          //IconButton(onPressed: ()=>_showForm(), icon: icon)
+          IconButton(onPressed: ()=>_showForm(), icon: Icon(Icons.add))
         ],
+      ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Center(
+              child: Card(
+                margin: EdgeInsets.all(20),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12)
+                ),
+
+              ),
+            )
+           // Text('Total: $total')
+          ],
+        ),
       ),
     );
   }
