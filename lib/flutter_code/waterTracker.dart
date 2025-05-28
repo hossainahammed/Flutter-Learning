@@ -74,8 +74,10 @@ class _waterTrackerState extends State<waterTracker> {
             ),
             Wrap(
               children: [
-                
-                ElevatedButton(onPressed:() {}, child: Text('+200 ml ',style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500,),))
+                ElevatedButton.icon(onPressed:(){},
+                    label: Text('+200 ml ',style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500,),),
+                  icon:Icon(Icons.water_drop),
+                )
               ],
               
 
