@@ -24,8 +24,8 @@ class MyApp extends StatelessWidget {
         // home: TodoApp());
         //home:MediaQury());
          //home:CalculatorApp());
-         //home:waterTracker());
-         home:Expense_Tracker());
+         home:waterTracker());
+        // home:Expense_Tracker());
 
 
 

@@ -13,9 +13,11 @@ class _waterTrackerState extends State<waterTracker> {
     return Scaffold(
       backgroundColor: Colors.blue.shade50,
       appBar: AppBar(
-        title: Text(
-          'Water Tracker App',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+        title: Center(
+          child: Text(
+            'Water Tracker App',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+          ),
         ),
       ),
       body: Center(
@@ -56,6 +58,7 @@ class _waterTrackerState extends State<waterTracker> {
 
             SizedBox(height: 40),
             Stack(
+              alignment: Alignment.center,
               children: [
                 Container(
                   height: 150,
@@ -67,6 +70,14 @@ class _waterTrackerState extends State<waterTracker> {
                     strokeWidth: 10,
                   ),
                 ),
+                Text(
+                  '20%', // Display the percentage of water consumed
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blueAccent,
+                  ),
+                ),
               ],
             ),
             SizedBox(
@@ -74,13 +85,8 @@ class _waterTrackerState extends State<waterTracker> {
             ),
             Wrap(
               children: [
-                ElevatedButton.icon(onPressed:(){},
-                    label: Text('+200 ml ',style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500,),),
-                  icon:Icon(Icons.water_drop),
-                )
+                add_water_Button()
               ],
-              
-
             ),
           ],
         ),
@@ -88,3 +94,5 @@ class _waterTrackerState extends State<waterTracker> {
     );
   }
 }
+
+
