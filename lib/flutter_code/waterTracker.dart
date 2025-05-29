@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'widget/add_water_Button.dart';
+
 class waterTracker extends StatefulWidget {
+
   const waterTracker({super.key});
 
   @override
@@ -45,7 +48,7 @@ class _waterTrackerState extends State<waterTracker> {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    '2000 ml',
+                    '2000 Liter',
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
@@ -84,10 +87,27 @@ class _waterTrackerState extends State<waterTracker> {
               height: 30,
             ),
             Wrap(
+              spacing: 20,
               children: [
-                add_water_Button()
+                add_water_Button(amount: 200,icon:Icons.local_drink , onClick: () {  },),
+                add_water_Button(amount: 500,icon:Icons.local_drink , onClick: () {  },),
+                add_water_Button(amount: 1000,icon:Icons.local_drink , onClick: () {  },),
               ],
             ),
+
+
+
+
+            SizedBox(height: 40,),
+
+            SizedBox(
+              width: double.infinity,
+              child: Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: ElevatedButton(onPressed: (){},style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,), child: Text('Reset',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),)),
+              ),
+            )
           ],
         ),
       ),
