@@ -61,7 +61,7 @@ class _waterTrackerState extends State<waterTracker> {
                   Text(
                     '$currentInTake Liter',
                     style: TextStyle(
-                      fontSize: 28,
+                      fontSize: 27,
                       fontWeight: FontWeight.bold,
                       color: Colors.blueAccent,
                     ),
