@@ -11,11 +11,22 @@ class waterTracker extends StatefulWidget {
 }
 
 class _waterTrackerState extends State<waterTracker> {
+
+  int currentInTake = 0;
+  final int goal = 2000;
+
+  void waterAdd(int amount){
+    setState(() {
+      currentInTake = (currentInTake+ amount).clamp(0, goal);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    double progress = (currentInTake/goal).clamp(0.0, 1.0);
     return Scaffold(
       backgroundColor: Colors.blue.shade50,
-      appBar: AppBar(
+      appBar: AppBar(backgroundColor: Colors.teal,
         title: Center(
           child: Text(
             'Water Tracker App',
@@ -48,7 +59,7 @@ class _waterTrackerState extends State<waterTracker> {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    '2000 Liter',
+                    '$currentInTake Liter',
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
@@ -67,14 +78,14 @@ class _waterTrackerState extends State<waterTracker> {
                   height: 150,
                   width: 150,
                   child: CircularProgressIndicator(
-                    value: 0.2,
+                    value:progress,
                     backgroundColor: Colors.grey,
                     color: Colors.blueAccent,
                     strokeWidth: 10,
                   ),
                 ),
                 Text(
-                  '20%', // Display the percentage of water consumed
+                  '${(progress*100).toInt()}%', // Display the percentage of water consumed
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -89,9 +100,9 @@ class _waterTrackerState extends State<waterTracker> {
             Wrap(
               spacing: 20,
               children: [
-                add_water_Button(amount: 200,icon:Icons.local_drink , onClick: () {  },),
-                add_water_Button(amount: 500,icon:Icons.local_drink , onClick: () {  },),
-                add_water_Button(amount: 1000,icon:Icons.local_drink , onClick: () {  },),
+                add_water_Button(amount: 200,icon:Icons.local_drink , onClick: ()=>waterAdd(200),),
+                add_water_Button(amount: 500,icon:Icons.local_drink , onClick:  ()=>waterAdd(500),),
+                add_water_Button(amount: 1000,icon:Icons.local_drink , onClick:  ()=>waterAdd(1000)),
               ],
             ),
 
