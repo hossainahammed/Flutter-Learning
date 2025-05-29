@@ -21,6 +21,12 @@ class _waterTrackerState extends State<waterTracker> {
     });
   }
 
+  void resetWater(){
+    setState(() {
+      currentInTake=0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double progress = (currentInTake/goal).clamp(0.0, 1.0);
@@ -115,7 +121,7 @@ class _waterTrackerState extends State<waterTracker> {
               width: double.infinity,
               child: Padding(
                 padding: const EdgeInsets.all(18.0),
-                child: ElevatedButton(onPressed: (){},style: ElevatedButton.styleFrom(
+                child: ElevatedButton(onPressed: ()=>resetWater(),style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,), child: Text('Reset',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),)),
               ),
             )
