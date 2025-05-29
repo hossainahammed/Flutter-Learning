@@ -41,91 +41,90 @@ class _waterTrackerState extends State<waterTracker> {
         ),
       ),
       body: Center(
-        child: Column(
-          children: [
-            SizedBox(height: 40),
-            Container(
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.blue.withOpacity(0.2),
-                    blurRadius: 10,
-                    spreadRadius: 2,
-                  ),
-                ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 40),
+              Container(
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.blue.withOpacity(0.2),
+                      blurRadius: 10,
+                      spreadRadius: 2,
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    Text(
+                      "Today's in Tank",
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      '$currentInTake Liter',
+                      style: TextStyle(
+                        fontSize: 27,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blueAccent,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              child: Column(
+          
+              SizedBox(height: 40),
+              Stack(
+                alignment: Alignment.center,
                 children: [
-                  Text(
-                    "Today's in Tank",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                  Container(
+                    height: 150,
+                    width: 150,
+                    child: CircularProgressIndicator(
+                      value:progress,
+                      backgroundColor: Colors.grey,
+                      color: Colors.blueAccent,
+                      strokeWidth: 10,
+                    ),
                   ),
-                  SizedBox(height: 10),
                   Text(
-                    '$currentInTake Liter',
+                    '${(progress*100).toInt()}%', // Display the percentage of water consumed
                     style: TextStyle(
-                      fontSize: 27,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Colors.blueAccent,
                     ),
                   ),
                 ],
               ),
-            ),
-
-            SizedBox(height: 40),
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                Container(
-                  height: 150,
-                  width: 150,
-                  child: CircularProgressIndicator(
-                    value:progress,
-                    backgroundColor: Colors.grey,
-                    color: Colors.blueAccent,
-                    strokeWidth: 10,
-                  ),
-                ),
-                Text(
-                  '${(progress*100).toInt()}%', // Display the percentage of water consumed
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blueAccent,
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Wrap(
-              spacing: 20,
-              children: [
-                add_water_Button(amount: 200,icon:Icons.local_drink , onClick: ()=>waterAdd(200),),
-                add_water_Button(amount: 500,icon:Icons.local_drink , onClick:  ()=>waterAdd(500),),
-                add_water_Button(amount: 1000,icon:Icons.local_drink , onClick:  ()=>waterAdd(1000)),
-              ],
-            ),
-
-
-
-
-            SizedBox(height: 40,),
-
-            SizedBox(
-              width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.all(18.0),
-                child: ElevatedButton(onPressed: ()=>resetWater(),style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,), child: Text('Reset',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),)),
+              SizedBox(
+                height: 30,
               ),
-            )
-          ],
+              Wrap(
+                spacing: 20,
+                children: [
+                  add_water_Button(amount: 200,icon:Icons.local_drink , onClick: ()=>waterAdd(200),),
+                  add_water_Button(amount: 500,icon:Icons.local_drink , onClick:  ()=>waterAdd(500),),
+                  add_water_Button(amount: 1000,icon:Icons.local_drink , onClick:  ()=>waterAdd(1000)),
+                ],
+              ),
+              
+              SizedBox(height: 40,),
+          
+              SizedBox(
+                width: double.infinity,
+                child: Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: ElevatedButton(onPressed: ()=>resetWater(),style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,), child: Text('Reset',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.white),)),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
