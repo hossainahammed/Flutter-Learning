@@ -19,6 +19,7 @@ class _Expense_TrackerState extends State<Expense_Tracker> {
   ];
 
   final List<Expense> _expense = [];
+
   double totall = 0.0;
 
   void _showForm(){
@@ -96,6 +97,14 @@ class _Expense_TrackerState extends State<Expense_Tracker> {
                 ),
                 ),
               ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                  itemCount: _expense.length,
+                  itemBuilder: (context,index){
+                return Card();
+
+              }),
             )
           ],
         ),

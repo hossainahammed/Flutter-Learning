@@ -6,7 +6,7 @@ class Expense{
 
 
 
-  Expense({
+  Expense({ //In OOP it is a constructor
     required this.title,
     required this.amount,
     required this.date,
