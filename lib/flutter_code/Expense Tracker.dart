@@ -47,6 +47,7 @@ class _Expense_TrackerState extends State<Expense_Tracker> {
               height: 15,
             ),
             TextField(
+              keyboardType:TextInputType.number,
               decoration: InputDecoration(
                 labelText: 'Amount'
               ),
@@ -64,8 +65,11 @@ class _Expense_TrackerState extends State<Expense_Tracker> {
             SizedBox(
                 width:double.infinity,
                 child: ElevatedButton(onPressed: (){
-                  if(titleControlller.text.isNotEmpty || double.tryParse(amountControlller.text)!=null)
-                  _adExpense(titleControlller.text,double.parse(amountControlller.text),expenseDateTime,selectedCategory);
+                  if(titleControlller.text.isNotEmpty || double.tryParse(amountControlller.text)!=null){
+                    _adExpense(titleControlller.text,double.parse(amountControlller.text),expenseDateTime,selectedCategory);
+
+                  }
+
                 },style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
                     child: Text("Add Expense",style:TextStyle(color: Colors.white),))
             ),
