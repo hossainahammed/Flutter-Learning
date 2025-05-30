@@ -69,6 +69,7 @@ class _Expense_TrackerState extends State<Expense_Tracker> {
                 child: ElevatedButton(onPressed: (){
                   //if(titleControlller.text.isNotEmpty || double.tryParse(amountControlller.text)!=null){
                     _adExpense(titleControlller.text,double.parse(amountControlller.text),expenseDateTime,selectedCategory);
+                    Navigator.pop(context);
 
                   //}
 
