@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+//import 'package:intl/intl.dart;
+import 'package:intl/intl.dart';
 
 import 'Expense_modal.dart';
 
@@ -22,67 +24,73 @@ class _Expense_TrackerState extends State<Expense_Tracker> {
 
   double totall = 0.0;
 
-  void _showForm(){
-    String selectedCategory  = categories.first;
-    TextEditingController titleControlller = TextEditingController();
-    TextEditingController amountControlller = TextEditingController();
-    DateTime expenseDateTime =DateTime.now();
-    showModalBottomSheet(context: context, builder:(context){
-      return Padding(
-        padding: const EdgeInsets.only(
-          left: 16,
-          right: 16,
-          top: 16,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextField(
-              controller: titleControlller,
-              decoration: InputDecoration(
-                labelText:'Title'
+  void _showForm() {
+    String selectedCategory = categories.first;
+    TextEditingController titleController = TextEditingController();
+    TextEditingController amountController = TextEditingController();
+    DateTime expenseDateTime = DateTime.now();
 
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: titleController,
+                decoration: InputDecoration(labelText: 'Title'),
               ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            TextField(
-              controller:amountControlller ,
-              keyboardType:TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Amount'
+              SizedBox(height: 15),
+              TextField(
+                controller: amountController,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(labelText: 'Amount'),
               ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            DropdownButtonFormField(items: categories.map((category) => DropdownMenuItem(value: category,child: Text(category),)).toList(),
-                onChanged: (value) => selectedCategory = value!,
-            decoration: InputDecoration(labelText: 'Select any one'),),
-            SizedBox(
-              height: 20,
-            ),
-
-            SizedBox(
-                width:double.infinity,
-                child: ElevatedButton(onPressed: (){
-                  //if(titleControlller.text.isNotEmpty || double.tryParse(amountControlller.text)!=null){
-                    _adExpense(titleControlller.text,double.parse(amountControlller.text),expenseDateTime,selectedCategory);
-                    Navigator.pop(context);
-
-                  //}
-
-                },style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                    child: Text("Add Expense",style:TextStyle(color: Colors.white),))
-            ),
-            SizedBox(height: 10,),
-
-          ],
-        ),
-      );
-    });
+              SizedBox(height: 15),
+              DropdownButtonFormField(
+                value: selectedCategory,
+                items: categories
+                    .map((category) => DropdownMenuItem(
+                    value: category, child: Text(category)))
+                    .toList(),
+                onChanged: (value) {
+                  if (value != null) selectedCategory = value;
+                },
+                decoration: InputDecoration(labelText: 'Select any one'),
+              ),
+              SizedBox(height: 20),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (titleController.text.isNotEmpty &&
+                        double.tryParse(amountController.text) != null) {
+                      _adExpense(
+                        titleController.text,
+                        double.parse(amountController.text),
+                        expenseDateTime,
+                        selectedCategory,
+                      );
+                      Navigator.pop(context);
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                  child: Text(
+                    "Add Expense",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+            ],
+          ),
+        );
+      },
+    );
   }
+
 
   void _adExpense(String title,double amount,DateTime date,String category){
     setState(() {
@@ -126,20 +134,23 @@ class _Expense_TrackerState extends State<Expense_Tracker> {
                 return Card(
                   child: ListTile(
                     leading: CircleAvatar(
+                      radius: 60,
                       backgroundColor: Colors.blueAccent,
                       child: Text(_expense[index].category),
 
                     ),
                     title: Text(_expense[index].title),
-
-                  ),
+                    subtitle: Text(
+                       DateFormat.yMMMd().format(_expense[index].date)),
+                ),
                 );
-
               }),
             )
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(onPressed: ()=>_showForm(),backgroundColor: Colors.orangeAccent
+        ,child: Icon(Icons.add),),
     );
   }
 }
