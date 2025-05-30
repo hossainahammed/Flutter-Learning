@@ -24,6 +24,9 @@ class _Expense_TrackerState extends State<Expense_Tracker> {
 
   void _showForm(){
     String selectedCategory  = categories.first;
+    TextEditingController titleControlller = TextEditingController();
+    TextEditingController amountControlller = TextEditingController();
+    DateTime expenseDateTime =DateTime.now();
     showModalBottomSheet(context: context, builder:(context){
       return Padding(
         padding: const EdgeInsets.only(
@@ -60,13 +63,22 @@ class _Expense_TrackerState extends State<Expense_Tracker> {
 
             SizedBox(
                 width:double.infinity,
-                child: ElevatedButton(onPressed: (){},style: ElevatedButton.styleFrom(backgroundColor: Colors.blue), child: Text("Add Expense",style:TextStyle(color: Colors.white),))
+                child: ElevatedButton(onPressed: (){
+                  _adExpense(titleControlller.text,double.parse(amountControlller.text),expenseDateTime,selectedCategory);
+                },style: ElevatedButton.styleFrom(backgroundColor: Colors.blue), child: Text("Add Expense",style:TextStyle(color: Colors.white),))
             ),
             SizedBox(height: 10,),
 
           ],
         ),
       );
+    });
+  }
+
+  void _adExpense(String title,double amount,DateTime date,String category){
+    setState(() {
+      _expense.add(Expense(title: title, amount: amount, date: date, category: category));
+      totall +=amount;
     });
   }
   @override
@@ -102,7 +114,17 @@ class _Expense_TrackerState extends State<Expense_Tracker> {
               child: ListView.builder(
                   itemCount: _expense.length,
                   itemBuilder: (context,index){
-                return Card();
+                return Card(
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.blueAccent,
+                      child: Text(_expense[index].category),
+
+                    ),
+                    title: Text(_expense[index].title),
+
+                  ),
+                );
 
               }),
             )
