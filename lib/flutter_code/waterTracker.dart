@@ -32,7 +32,7 @@ class _waterTrackerState extends State<waterTracker> {
     double progress = (currentInTake/goal).clamp(0.0, 1.0);
     return Scaffold(
       backgroundColor: Colors.blue.shade50,
-      appBar: AppBar(backgroundColor: Colors.teal,
+      appBar: AppBar(backgroundColor: Colors.blue.shade400,
         title: Center(
           child: Text(
             'Water Tracker App',

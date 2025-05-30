@@ -14,7 +14,7 @@ class _Expense_TrackerState extends State<Expense_Tracker> {
   final List<String> categories=[
     'Food',
     'Transport',
-    'Enter',
+    'Entertainment',
     'Bills'
   ];
 
@@ -35,6 +35,7 @@ class _Expense_TrackerState extends State<Expense_Tracker> {
           children: [
             TextField(
               decoration: InputDecoration(
+                labelText:'Title'
 
               ),
             ),
@@ -58,8 +59,9 @@ class _Expense_TrackerState extends State<Expense_Tracker> {
 
             SizedBox(
                 width:double.infinity,
-                child: ElevatedButton(onPressed: (){}, child: Text("Add Expense")))
-
+                child: ElevatedButton(onPressed: (){},style: ElevatedButton.styleFrom(backgroundColor: Colors.blue), child: Text("Add Expense",style:TextStyle(color: Colors.white),))
+            ),
+            SizedBox(height: 10,),
 
           ],
         ),
@@ -80,14 +82,21 @@ class _Expense_TrackerState extends State<Expense_Tracker> {
           children: [
             Center(
               child: Card(
+                color: Colors.orangeAccent,
                 margin: EdgeInsets.all(20),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12)
                 ),
-
+                child: Padding(padding: const EdgeInsets.all(50.0),
+                child: Text('Total:৳$totall',
+                  style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold
+                ),
+                ),
+                ),
               ),
             )
-          // Text('Total: $total',)
           ],
         ),
       ),
