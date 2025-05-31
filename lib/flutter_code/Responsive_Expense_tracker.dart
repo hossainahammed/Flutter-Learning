@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'Expense_modal.dart';
 import 'widget/ExpensePieChart.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ResponsiveExpenseTracker extends StatefulWidget {
   final bool isDarkMode;
@@ -18,14 +20,45 @@ class ResponsiveExpenseTracker extends StatefulWidget {
 }
 
 class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
-  final List<String> categories = ['Food', 'Transport', 'Entertainment', 'Bills','Shopping','Exetra'];
-  final List<Expense> _expense = [];
+  final List<String> categories = ['Food', 'Transport', 'Entertainment', 'Bills', 'Shopping', 'Exetra'];
+  List<Expense> _expense = []; // Initialize as empty list
 
   String _currency = '৳';
   double _budgetLimit = 2000.0;
   double totall = 0.0;
   String _selectedFilter = 'All';
   String _selectedSort = 'Newest';
+
+  Future<void> _saveData(String key, String value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString(key, value);
+  }
+
+  Future<String?> _loadData(String key) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString(key);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadExpenses(); // Load expenses
+  }
+
+  Future<void> _loadExpenses() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? expensesString = prefs.getString('expenses');
+    if (expensesString != null) {
+      List<dynamic> jsonList = jsonDecode(expensesString);
+      _expense = jsonList.map((json) => Expense.fromJson(json)).toList();
+      totall = _expense.fold(0, (sum, item) => sum + item.amount);
+    }
+  }
+
+  Future<void> _saveExpenses() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('expenses', jsonEncode(_expense.map((e) => e.toJson()).toList()));
+  }
 
   void _showForm({Expense? existingExpense, int? index}) {
     String selectedCategory = existingExpense?.category ?? categories.first;
@@ -135,6 +168,7 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
     setState(() {
       _expense.add(Expense(title: title, amount: amount, date: date, category: category));
       totall += amount;
+      _saveExpenses(); // Save expenses after adding
     });
   }
 
@@ -143,8 +177,10 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
       totall -= _expense[index].amount;
       _expense[index] = Expense(title: title, amount: amount, date: date, category: category);
       totall += amount;
+      _saveExpenses(); // Save expenses after editing
     });
   }
+
   void _confirmDeleteExpense(int index) {
     showDialog(
       context: context,
@@ -174,10 +210,12 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
       },
     );
   }
+
   void _deleteExpense(int index) {
     setState(() {
       totall -= _expense[index].amount;
       _expense.removeAt(index);
+      _saveExpenses(); // Save expenses after deleting
     });
   }
 
@@ -197,10 +235,9 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Color(0xFFE0F7FA),
       appBar: AppBar(
         backgroundColor: Colors.teal,
-        title: Text("Track Your  Expenses"),
+        title: Text("Track Your Expenses"),
         actions: [
           IconButton(
             icon: Icon(Icons.attach_money),
@@ -239,8 +276,7 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
                   children: [
                     Icon(Icons.warning, color: Colors.white),
                     SizedBox(width: 8),
-                    Text("Budget Limit Exceeded!",
-                        style: TextStyle(color: Colors.white)),
+                    Text("Budget Limit Exceeded!", style: TextStyle(color: Colors.white)),
                   ],
                 ),
               ),
@@ -272,7 +308,7 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
               padding: const EdgeInsets.all(8.0),
               child: _expense.isEmpty
                   ? Center(child: Text("No data to show in pie chart."))
-                  : ExpensePieChart(expenses: _expense,currency: _currency),
+                  : ExpensePieChart(expenses: _expense, currency: _currency),
             ),
             Card(
               color: Colors.orangeAccent,
@@ -298,7 +334,13 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
                         child: Text(e.category[0]),
                       ),
                       title: Text(e.title),
-                      subtitle: Text('${DateFormat.yMMMd().format(e.date)} | $_currency${e.amount}'),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('${DateFormat.yMMMd().format(e.date)}'),
+                          Text('Category: ${e.category} | $_currency${e.amount}'),
+                        ],
+                      ),
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -308,8 +350,7 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
                           ),
                           IconButton(
                             icon: Icon(Icons.delete),
-                            //onPressed: () => _deleteExpense(index),
-                            onPressed: () => _confirmDeleteExpense(index), // Call the confirmation method
+                            onPressed: () => _confirmDeleteExpense(index),
                           ),
                         ],
                       ),
