@@ -171,7 +171,7 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
     return Scaffold(
       //backgroundColor: Color(0xFFE0F7FA),
       appBar: AppBar(
-        title: Text("Expense Tracker"),
+        title: Text("Track Your Daily Expenses"),
         actions: [
           IconButton(
             icon: Icon(Icons.attach_money),
@@ -243,7 +243,7 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
               padding: const EdgeInsets.all(8.0),
               child: _expense.isEmpty
                   ? Center(child: Text("No data to show in pie chart."))
-                  : ExpensePieChart(expenses: _expense),
+                  : ExpensePieChart(expenses: _expense,currency: _currency),
             ),
             Card(
               color: Colors.orangeAccent,

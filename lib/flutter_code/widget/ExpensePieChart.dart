@@ -1,13 +1,13 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-
 import '../Expense_modal.dart';
 
 
 class ExpensePieChart extends StatelessWidget {
   final List<Expense> expenses;
+  final String currency;
 
-  const ExpensePieChart({super.key, required this.expenses});
+  const ExpensePieChart({super.key, required this.expenses,required this.currency});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,9 @@ class ExpensePieChart extends StatelessWidget {
       return PieChartSectionData(
         color: color,
         value: value,
-        title: '$category\n${value.toStringAsFixed(1)}',
+        title: '${value.toStringAsFixed(1)}$currency',
+        //title: value.toStringAsFixed(1),
+       // title: '$category\n${value.toStringAsFixed(1)}',
         radius: 60,
         titleStyle: const TextStyle(
           fontSize: 14,
