@@ -1,7 +1,7 @@
 name: if_else_statement
 description: "A new Flutter project."
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
 version: 1.0.0+1
 
@@ -9,6 +9,8 @@ environment:
   sdk: ^3.7.2
 
 dependencies:
+  shared_preferences: ^2.2.2
+  fl_chart: ^0.63.0
   flutter:
     sdk: flutter
 
