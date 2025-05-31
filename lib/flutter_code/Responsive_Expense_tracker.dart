@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'Expense_modal.dart';
 import 'widget/ExpensePieChart.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ResponsiveExpenseTracker extends StatefulWidget {
@@ -28,6 +29,12 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
   double totall = 0.0;
   String _selectedFilter = 'All';
   String _selectedSort = 'Newest';
+
+  void shareApp() {
+    final String appLink = 'https://play.google.com/store/apps/details?id=com.example.myapp';
+    final String message = 'Check out my new app: $appLink';
+    Share.share(message);
+  }
 
   Future<void> _saveData(String key, String value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -240,8 +247,12 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
         title: Text("Track Your Expenses"),
         actions: [
           IconButton(
+            icon: Icon(Icons.share), // Add a share icon
+            onPressed: shareApp, // Call the share function
+          ),
+          IconButton(
             icon: Icon(Icons.attach_money),
-            onPressed: _setBudgetLimit, // Call the method to set budget limit
+            onPressed: _setBudgetLimit,
           ),
           DropdownButton<String>(
             value: _currency,
