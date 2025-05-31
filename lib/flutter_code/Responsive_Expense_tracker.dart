@@ -171,7 +171,8 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
     return Scaffold(
       //backgroundColor: Color(0xFFE0F7FA),
       appBar: AppBar(
-        title: Text("Track Your Daily Expenses"),
+        backgroundColor: Colors.teal,
+        title: Text("Track Your  Expenses"),
         actions: [
           IconButton(
             icon: Icon(Icons.attach_money),
