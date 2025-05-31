@@ -145,7 +145,35 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
       totall += amount;
     });
   }
-
+  void _confirmDeleteExpense(int index) {
+    showDialog(
+      context: context,
+      builder: (ctx) {
+        return AlertDialog(
+          title: Text('Confirm Deletion'),
+          content: Text('Are you sure you want to delete this expense?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(ctx).pop(); // Close dialog
+              },
+              child: Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                _deleteExpense(index); // Delete expense
+                Navigator.of(ctx).pop(); // Close dialog
+              },
+              child: Text(
+                'Delete',
+                style: TextStyle(color: Colors.red),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
   void _deleteExpense(int index) {
     setState(() {
       totall -= _expense[index].amount;
@@ -280,7 +308,8 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
                           ),
                           IconButton(
                             icon: Icon(Icons.delete),
-                            onPressed: () => _deleteExpense(index),
+                            //onPressed: () => _deleteExpense(index),
+                            onPressed: () => _confirmDeleteExpense(index), // Call the confirmation method
                           ),
                         ],
                       ),
