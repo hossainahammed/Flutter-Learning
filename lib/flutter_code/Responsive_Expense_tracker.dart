@@ -169,6 +169,7 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //backgroundColor: Color(0xFFE0F7FA),
       appBar: AppBar(
         title: Text("Expense Tracker"),
         actions: [

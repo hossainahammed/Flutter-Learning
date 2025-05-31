@@ -24,7 +24,7 @@ class ExpensePieChart extends StatelessWidget {
       return PieChartSectionData(
         color: color,
         value: value,
-        title: value.toStringAsFixed(1),
+        title: '$category\n${value.toStringAsFixed(1)}',
         radius: 60,
         titleStyle: const TextStyle(
           fontSize: 14,
@@ -53,6 +53,8 @@ class ExpensePieChart extends StatelessWidget {
         return Colors.green;
       case 'Bills':
         return Colors.orange;
+      case  'Shopping':
+        return Colors.pinkAccent;
       default:
         return Colors.grey;
     }
