@@ -18,7 +18,7 @@ class ResponsiveExpenseTracker extends StatefulWidget {
 }
 
 class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
-  final List<String> categories = ['Food', 'Transport', 'Entertainment', 'Bills'];
+  final List<String> categories = ['Food', 'Transport', 'Entertainment', 'Bills','Shopping','Exetra'];
   final List<Expense> _expense = [];
 
   String _currency = '৳';
@@ -95,6 +95,42 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
     );
   }
 
+  void _setBudgetLimit() {
+    TextEditingController budgetController = TextEditingController(text: _budgetLimit.toString());
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Set Budget Limit"),
+          content: TextField(
+            controller: budgetController,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(labelText: 'Budget Limit'),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                double? newLimit = double.tryParse(budgetController.text);
+                if (newLimit != null) {
+                  setState(() {
+                    _budgetLimit = newLimit;
+                  });
+                  Navigator.pop(context);
+                }
+              },
+              child: Text("Set"),
+            ),
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text("Cancel"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   void _addExpense(String title, double amount, DateTime date, String category) {
     setState(() {
       _expense.add(Expense(title: title, amount: amount, date: date, category: category));
@@ -136,6 +172,10 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
       appBar: AppBar(
         title: Text("Expense Tracker"),
         actions: [
+          IconButton(
+            icon: Icon(Icons.attach_money),
+            onPressed: _setBudgetLimit, // Call the method to set budget limit
+          ),
           DropdownButton<String>(
             value: _currency,
             items: ['৳', '\$', '€', '₹']
