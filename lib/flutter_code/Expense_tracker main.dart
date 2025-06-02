@@ -6,7 +6,7 @@ import 'package:device_preview/device_preview.dart';
 void main() {
   runApp(
       DevicePreview(
-        enabled: true,
+        enabled: false,
         //builder: (context)=>MyApp1() ,
         builder: (context)=>MyApp() ,
         //builder: (context)=>waterTracker() ,

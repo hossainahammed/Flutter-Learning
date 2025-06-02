@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'Expense_modal.dart';
 import 'widget/ExpensePieChart.dart';
-import 'package:share_plus/share_plus.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ResponsiveExpenseTracker extends StatefulWidget {
@@ -29,12 +29,6 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
   double totall = 0.0;
   String _selectedFilter = 'All';
   String _selectedSort = 'Newest';
-
-  void shareApp() {
-    final String appLink = 'https://play.google.com/store/apps/details?id=com.example.myapp';
-    final String message = 'Check out my new app: $appLink';
-    Share.share(message);
-  }
 
   Future<void> _saveData(String key, String value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -75,60 +69,68 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
     DateTime expenseDateTime = existingExpense?.date ?? DateTime.now();
 
     showModalBottomSheet(
+      isScrollControlled: true,
       context: context,
       builder: (context) {
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                controller: titleController,
-                decoration: InputDecoration(labelText: 'Title'),
-              ),
-              SizedBox(height: 15),
-              TextField(
-                controller: amountController,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(labelText: 'Amount'),
-              ),
-              SizedBox(height: 15),
-              DropdownButtonFormField(
-                value: selectedCategory,
-                items: categories
-                    .map((category) => DropdownMenuItem(value: category, child: Text(category)))
-                    .toList(),
-                onChanged: (value) {
-                  if (value != null) selectedCategory = value;
-                },
-                decoration: InputDecoration(labelText: 'Select Category'),
-              ),
-              SizedBox(height: 20),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (titleController.text.isNotEmpty &&
-                        double.tryParse(amountController.text) != null) {
-                      if (existingExpense != null && index != null) {
-                        _editExpense(index, titleController.text, double.parse(amountController.text),
-                            expenseDateTime, selectedCategory);
-                      } else {
-                        _addExpense(titleController.text, double.parse(amountController.text),
-                            expenseDateTime, selectedCategory);
-                      }
-                      Navigator.pop(context);
-                    }
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom, // Padding for keyboard
+            left: 16,
+            right: 16,
+            top: 16,
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min, // Wrap content height
+              children: [
+                TextField(
+                  controller: titleController,
+                  decoration: InputDecoration(labelText: 'Title'),
+                ),
+                SizedBox(height: 15),
+                TextField(
+                  controller: amountController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(labelText: 'Amount'),
+                ),
+                SizedBox(height: 15),
+                DropdownButtonFormField(
+                  value: selectedCategory,
+                  items: categories
+                      .map((category) => DropdownMenuItem(value: category, child: Text(category)))
+                      .toList(),
+                  onChanged: (value) {
+                    if (value != null) selectedCategory = value;
                   },
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                  child: Text(
-                    existingExpense != null ? "Update Expense" : "Add Expense",
-                    style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(labelText: 'Select Category'),
+                ),
+                SizedBox(height: 20),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (titleController.text.isNotEmpty &&
+                          double.tryParse(amountController.text) != null) {
+                        if (existingExpense != null && index != null) {
+                          _editExpense(index, titleController.text, double.parse(amountController.text),
+                              expenseDateTime, selectedCategory);
+                        } else {
+                          _addExpense(titleController.text, double.parse(amountController.text),
+                              expenseDateTime, selectedCategory);
+                        }
+                        Navigator.pop(context);
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                    child: Text(
+                      existingExpense != null ? "Update Expense" : "Add Expense",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(height: 10),
-            ],
+                SizedBox(height: 10),
+              ],
+            ),
           ),
         );
       },
@@ -241,18 +243,17 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
 
   @override
   Widget build(BuildContext context) {
+    final keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
+
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: Colors.teal,
         title: Text("Track Your Expenses"),
         actions: [
           IconButton(
-            icon: Icon(Icons.share), // Add a share icon
-            onPressed: shareApp, // Call the share function
-          ),
-          IconButton(
             icon: Icon(Icons.attach_money),
-            onPressed: _setBudgetLimit,
+            onPressed: _setBudgetLimit, // Call the method to set budget limit
           ),
           DropdownButton<String>(
             value: _currency,
@@ -276,101 +277,104 @@ class _ResponsiveExpenseTrackerState extends State<ResponsiveExpenseTracker> {
         child: Icon(Icons.add),
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            if (totall > _budgetLimit)
+        child: Padding(
+          padding:  EdgeInsets.only(bottom: keyboardHeight),
+          child: Column(
+            children: [
+              if (totall > _budgetLimit)
+                Container(
+                  padding: EdgeInsets.all(8),
+                  color: Colors.redAccent,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.warning, color: Colors.white),
+                      SizedBox(width: 8),
+                      Text("Budget Limit Exceeded!", style: TextStyle(color: Colors.white)),
+                    ],
+                  ),
+                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  DropdownButton<String>(
+                    value: _selectedFilter,
+                    items: ['All', ...categories]
+                        .map((c) => DropdownMenuItem(value: c, child: Text(c)))
+                        .toList(),
+                    onChanged: (value) {
+                      if (value != null) setState(() => _selectedFilter = value);
+                    },
+                  ),
+                  DropdownButton<String>(
+                    value: _selectedSort,
+                    items: ['Newest', 'Amount']
+                        .map((c) => DropdownMenuItem(value: c, child: Text("Sort by $c")))
+                        .toList(),
+                    onChanged: (value) {
+                      if (value != null) setState(() => _selectedSort = value);
+                    },
+                  ),
+                ],
+              ),
               Container(
-                padding: EdgeInsets.all(8),
-                color: Colors.redAccent,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.warning, color: Colors.white),
-                    SizedBox(width: 8),
-                    Text("Budget Limit Exceeded!", style: TextStyle(color: Colors.white)),
-                  ],
+                height: 200,
+                padding: const EdgeInsets.all(8.0),
+                child: _expense.isEmpty
+                    ? Center(child: Text("No data to show in pie chart."))
+                    : ExpensePieChart(expenses: _expense, currency: _currency),
+              ),
+              Card(
+                color: Colors.orangeAccent,
+                margin: EdgeInsets.all(12),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Text(
+                    'Total: $_currency$totall',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                DropdownButton<String>(
-                  value: _selectedFilter,
-                  items: ['All', ...categories]
-                      .map((c) => DropdownMenuItem(value: c, child: Text(c)))
-                      .toList(),
-                  onChanged: (value) {
-                    if (value != null) setState(() => _selectedFilter = value);
+              Expanded(
+                child: ListView.builder(
+                  itemCount: _filteredExpenses.length,
+                  itemBuilder: (context, index) {
+                    final e = _filteredExpenses[index];
+                    return Card(
+                      child: ListTile(
+                        leading: CircleAvatar(
+                          backgroundColor: Colors.teal,
+                          child: Text(e.category[0]),
+                        ),
+                        title: Text(e.title),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('${DateFormat.yMMMd().format(e.date)}'),
+                            Text('Category: ${e.category} | $_currency${e.amount}'),
+                          ],
+                        ),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.edit),
+                              onPressed: () => _showForm(existingExpense: e, index: index),
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.delete),
+                              onPressed: () => _confirmDeleteExpense(index),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
                   },
                 ),
-                DropdownButton<String>(
-                  value: _selectedSort,
-                  items: ['Newest', 'Amount']
-                      .map((c) => DropdownMenuItem(value: c, child: Text("Sort by $c")))
-                      .toList(),
-                  onChanged: (value) {
-                    if (value != null) setState(() => _selectedSort = value);
-                  },
-                ),
-              ],
-            ),
-            Container(
-              height: 200,
-              padding: const EdgeInsets.all(8.0),
-              child: _expense.isEmpty
-                  ? Center(child: Text("No data to show in pie chart."))
-                  : ExpensePieChart(expenses: _expense, currency: _currency),
-            ),
-            Card(
-              color: Colors.orangeAccent,
-              margin: EdgeInsets.all(12),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Text(
-                  'Total: $_currency$totall',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
               ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: _filteredExpenses.length,
-                itemBuilder: (context, index) {
-                  final e = _filteredExpenses[index];
-                  return Card(
-                    child: ListTile(
-                      leading: CircleAvatar(
-                        backgroundColor: Colors.teal,
-                        child: Text(e.category[0]),
-                      ),
-                      title: Text(e.title),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('${DateFormat.yMMMd().format(e.date)}'),
-                          Text('Category: ${e.category} | $_currency${e.amount}'),
-                        ],
-                      ),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            icon: Icon(Icons.edit),
-                            onPressed: () => _showForm(existingExpense: e, index: index),
-                          ),
-                          IconButton(
-                            icon: Icon(Icons.delete),
-                            onPressed: () => _confirmDeleteExpense(index),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
