@@ -88,7 +88,7 @@ class _TdoScreenState extends State<TdoScreen> {
                     padding: const EdgeInsets.all(18.0),
                     child: Column(
                       children: [
-                        Text('10',
+                        Text(activeCount.toString(),
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
@@ -119,7 +119,7 @@ class _TdoScreenState extends State<TdoScreen> {
                     padding: const EdgeInsets.all(18.0),
                     child: Column(
                       children: [
-                        Text('10',
+                        Text(completedCount.toString(),
                           style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
