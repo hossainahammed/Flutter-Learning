@@ -132,7 +132,20 @@ class _TdoScreenState extends State<TdoScreen> {
                 ),
               )
             ],
+          ),
+          Expanded(
+            child: ListView.builder(
+                itemCount: tasks.length,
+                itemBuilder: (context,index){
+                  return Card(
+                    child: ListTile(
+                      title: Text(tasks[index]['task']),
+                    ),
+
+                  );
+            }),
           )
+
 
         ],
       ),
