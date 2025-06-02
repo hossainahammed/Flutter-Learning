@@ -8,6 +8,24 @@ class TdoScreen extends StatefulWidget {
 }
 
 class _TdoScreenState extends State<TdoScreen> {
+
+  void _showTaskDialouge({int ? index}){
+    TextEditingController _taskController = TextEditingController();
+
+    showDialog(context: context, builder: (context)=>AlertDialog(
+      title: Text('Add Task'),
+      content: TextField(
+        controller: _taskController,
+      ),
+      actions: [
+        TextButton(onPressed: (){
+          Navigator.pop(context);
+        }, child: Text('Cancel'))
+      ],
+
+    ));
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,6 +108,8 @@ class _TdoScreenState extends State<TdoScreen> {
 
         ],
       ),
+      floatingActionButton: FloatingActionButton(onPressed: ()=>_showTaskDialouge(),
+        child: Icon(Icons.add),),
     );
   }
 }
