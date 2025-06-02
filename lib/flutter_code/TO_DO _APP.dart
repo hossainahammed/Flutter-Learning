@@ -16,11 +16,18 @@ class _TdoScreenState extends State<TdoScreen> {
       title: Text('Add Task'),
       content: TextField(
         controller: _taskController,
+        decoration: InputDecoration(
+          hintText: 'Enter Task'
+        ),
       ),
       actions: [
         TextButton(onPressed: (){
           Navigator.pop(context);
-        }, child: Text('Cancel'))
+        }, child: Text('Cancel')),
+
+        ElevatedButton(style:ElevatedButton.styleFrom(
+        shape: StadiumBorder()
+        ),onPressed: (){}, child: Text('Save')),
       ],
 
     ));
