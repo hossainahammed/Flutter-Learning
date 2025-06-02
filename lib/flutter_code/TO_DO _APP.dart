@@ -9,7 +9,22 @@ class TdoScreen extends StatefulWidget {
 
 class _TdoScreenState extends State<TdoScreen> {
 
-  //List<Map<String,dynamic>> tasks =[];
+  List<Map<String,dynamic>> tasks =[];
+  bool showActiveTask = true;
+
+  void _addTask(String task){
+    setState(() {
+      tasks.add(
+        {
+          'task' :task,
+          'completed' : false,
+        }
+
+      );
+      Navigator.pop(context);
+    });
+  }
+  
 
   void _showTaskDialouge({int ? index}){
     TextEditingController _taskController = TextEditingController();
@@ -29,7 +44,11 @@ class _TdoScreenState extends State<TdoScreen> {
 
         ElevatedButton(style:ElevatedButton.styleFrom(
         shape: StadiumBorder()
-        ),onPressed: (){}, child: Text('Save')),
+        ),onPressed: (){
+          if(_taskController.text.trim().isNotEmpty){
+            _addTask(_taskController.text);
+          }
+        }, child: Text('Save')),
       ],
 
     ));
