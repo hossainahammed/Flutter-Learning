@@ -140,11 +140,14 @@ class _TdoScreenState extends State<TdoScreen> {
             child: ListView.builder(
                 itemCount: tasks.length,
                 itemBuilder: (context,index){
-                  return Card(
-                    child: ListTile(
-                      title: Text(tasks[index]['task']),
-                    ),
+                  return Dismissible(
+                    key: Key(UniqueKey().toString()),
+                    child: Card(
+                      child: ListTile(
+                        title: Text(tasks[index]['task']),
+                      ),
 
+                    ),
                   );
             }),
           )
