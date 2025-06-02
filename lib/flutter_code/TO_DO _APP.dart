@@ -54,6 +54,9 @@ class _TdoScreenState extends State<TdoScreen> {
     ));
 
   }
+  
+  int get activeCount => tasks.where((task)=>!task['completed']).length;
+  int get completedCount => tasks.where((task)=>task['completed']).length;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
