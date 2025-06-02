@@ -142,6 +142,24 @@ class _TdoScreenState extends State<TdoScreen> {
                 itemBuilder: (context,index){
                   return Dismissible(
                     key: Key(UniqueKey().toString()),
+                    background: Container(
+                      color: Colors.green,
+                      child: Icon(Icons.check_box,color:Colors.white,),
+                      
+                    ),
+                    
+                    secondaryBackground: Container(
+                      color: Colors.red,
+                      child: Icon(Icons.delete,color: Colors.white,),
+                    ),
+                    onDismissed: (direction){
+                      if(direction == DismissDirection.startToEnd){
+                        // Task complete
+                      }
+                      else{
+                        //delete task
+                      }
+                    },
                     child: Card(
                       child: ListTile(
                         title: Text(tasks[index]['task']),
