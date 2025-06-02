@@ -59,6 +59,7 @@ class _TdoScreenState extends State<TdoScreen> {
   int get completedCount => tasks.where((task)=>task['completed']).length;
   @override
   Widget build(BuildContext context) {
+    List<Map<String,dynamic>> filterdTasks = tasks.where((task)=>task['completed'] !=showActiveTask).toList();
     return Scaffold(
       backgroundColor: Colors.blue.shade50,
       appBar: AppBar(
@@ -138,7 +139,7 @@ class _TdoScreenState extends State<TdoScreen> {
           ),
           Expanded(
             child: ListView.builder(
-                itemCount: tasks.length,
+                itemCount: filterdTasks.length,
                 itemBuilder: (context,index){
                   return Dismissible(
                     key: Key(UniqueKey().toString()),
@@ -162,7 +163,7 @@ class _TdoScreenState extends State<TdoScreen> {
                     },
                     child: Card(
                       child: ListTile(
-                        title: Text(tasks[index]['task']),
+                        title: Text(filterdTasks[index]['task']),
                       ),
 
                     ),
