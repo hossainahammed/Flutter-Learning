@@ -73,41 +73,16 @@ class _TdoScreenState extends State<TdoScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
 
-              Card(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.orange,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black12,
-                        blurRadius: 4,
-                      )
-                    ]
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(18.0),
-                    child: Column(
-                      children: [
-                        Text(activeCount.toString(),
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                        ),),
-                        Text('Active', style: TextStyle(
-                          fontSize: 23,
-                          fontWeight: FontWeight.w500,
-                        ),),
-                      ],
-                
-                    ),
-                  ),
-                ),
-              ),
-              Card(
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.green,
+              InkWell(
+                onTap: (){
+                  setState(() {
+                    showActiveTask = true;
+                  });
+                },
+                child: Card(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.orange,
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: [
                         BoxShadow(
@@ -115,22 +90,61 @@ class _TdoScreenState extends State<TdoScreen> {
                           blurRadius: 4,
                         )
                       ]
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(18.0),
-                    child: Column(
-                      children: [
-                        Text(completedCount.toString(),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(18.0),
+                      child: Column(
+                        children: [
+                          Text(activeCount.toString(),
                           style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
                           ),),
-                        Text('Completed', style: TextStyle(
-                          fontSize: 23,
-                          fontWeight: FontWeight.w500,
-                        ),),
-                      ],
+                          Text('Active', style: TextStyle(
+                            fontSize: 23,
+                            fontWeight: FontWeight.w500,
+                          ),),
+                        ],
 
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: (){
+                  setState(() {
+                    showActiveTask= false;
+                  });
+                },
+                child: Card(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 4,
+                          )
+                        ]
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(18.0),
+                      child: Column(
+                        children: [
+                          Text(completedCount.toString(),
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                            ),),
+                          Text('Completed', style: TextStyle(
+                            fontSize: 23,
+                            fontWeight: FontWeight.w500,
+                          ),),
+                        ],
+
+                      ),
                     ),
                   ),
                 ),
