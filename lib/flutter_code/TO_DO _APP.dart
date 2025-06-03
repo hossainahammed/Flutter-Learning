@@ -202,6 +202,7 @@ class _TdoScreenState extends State<TdoScreen> {
                         value: filterdTasks[index]['completed'],
                         onChanged: (value) => toggleTaskStatus(index),
                       ),
+                      trailing: IconButton(onPressed: ()=>_showTaskDialouge(index: index), icon: Icon(Icons.edit)),
                     ),
                   ),
                 );
