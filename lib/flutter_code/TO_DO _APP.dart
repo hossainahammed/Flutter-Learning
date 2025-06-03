@@ -54,6 +54,12 @@ class _TdoScreenState extends State<TdoScreen> {
     ));
 
   }
+  void toggleTaskStatus(int index){
+    setState(() {
+      tasks[index]['completed'] =!tasks[index]['completed'];
+    });
+
+  }
   
   int get activeCount => tasks.where((task)=>!task['completed']).length;
   int get completedCount => tasks.where((task)=>task['completed']).length;
@@ -170,6 +176,7 @@ class _TdoScreenState extends State<TdoScreen> {
                     onDismissed: (direction){
                       if(direction == DismissDirection.startToEnd){
                         // Task complete
+                        toggleTaskStatus(index);
                       }
                       else{
                         //delete task
