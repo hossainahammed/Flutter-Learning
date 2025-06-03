@@ -60,7 +60,13 @@ class _TdoScreenState extends State<TdoScreen> {
     });
 
   }
-  
+
+  void deleteTask(int index){
+    setState(() {
+      tasks.removeAt(index);
+
+    });
+  }
   int get activeCount => tasks.where((task)=>!task['completed']).length;
   int get completedCount => tasks.where((task)=>task['completed']).length;
   @override
@@ -180,6 +186,7 @@ class _TdoScreenState extends State<TdoScreen> {
                       }
                       else{
                         //delete task
+                        deleteTask(index);
                       }
                     },
                     child: Card(
