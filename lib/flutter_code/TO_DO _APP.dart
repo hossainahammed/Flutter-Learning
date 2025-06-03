@@ -196,6 +196,12 @@ class _TdoScreenState extends State<TdoScreen> {
                                   : null,
                         ),
                       ),
+
+                      leading: Checkbox(
+                        shape: CircleBorder(),
+                        value: filterdTasks[index]['completed'],
+                        onChanged: (value) => toggleTaskStatus(index),
+                      ),
                     ),
                   ),
                 );
