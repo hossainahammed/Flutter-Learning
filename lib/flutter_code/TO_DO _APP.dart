@@ -18,14 +18,25 @@ class _TdoScreenState extends State<TdoScreen> {
     });
   }
 
+  void editTask(int index,String updateTask) {
+    setState(() {
+     tasks[index]['task'] = updateTask;
+    });
+  }
+
   void _showTaskDialouge({int? index}) {
-    TextEditingController _taskController = TextEditingController();
+    TextEditingController _taskController = TextEditingController(
+
+      text: index!=null ? tasks[index]['task']: ''
+    );
+
+
 
     showDialog(
       context: context,
       builder:
           (context) => AlertDialog(
-            title: Text('Add Task'),
+            title: Text(index != null ? 'Edit Task' : 'Add Task'),
             content: TextField(
               controller: _taskController,
               decoration: InputDecoration(hintText: 'Enter Task'),
@@ -42,7 +53,15 @@ class _TdoScreenState extends State<TdoScreen> {
                 style: ElevatedButton.styleFrom(shape: StadiumBorder()),
                 onPressed: () {
                   if (_taskController.text.trim().isNotEmpty) {
-                    _addTask(_taskController.text);
+                    if (index != null){
+                      editTask(index, _taskController.text);
+
+                    }
+                    else{
+                      _addTask(_taskController.text);
+
+                    }
+
                   }
                 },
                 child: Text('Save'),
