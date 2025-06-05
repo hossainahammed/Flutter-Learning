@@ -39,7 +39,7 @@ class _TdoScreenState extends State<TdoScreen> {
             title: Text(index != null ? 'Edit Task' : 'Add Task'),
             content: TextField(
               controller: _taskController,
-              decoration: InputDecoration(hintText: 'Enter Tasks'),
+              decoration: InputDecoration(hintText: 'Enter Task'),
             ),
             actions: [
               TextButton(
