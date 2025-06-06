@@ -46,7 +46,7 @@ class _TdoScreenState extends State<TdoScreen> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text('Cancel'),
+                child: Text('Cancell'),
               ),
 
               ElevatedButton(
