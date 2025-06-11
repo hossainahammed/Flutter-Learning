@@ -10,6 +10,17 @@ class api_class extends StatefulWidget {
 class _api_classState extends State<api_class> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('User list'),
+      ),
+      body: ListView.builder(
+          itemBuilder: context,index){
+        return ListTile();
+
+    },
+
+
+    );
   }
 }
