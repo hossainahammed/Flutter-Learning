@@ -17,7 +17,7 @@ class _api_classState extends State<api_class> {
       body: ListView.builder(
           itemBuilder: context,index){
         return ListTile(
-        title: Text('Hossain'),
+        title: Text('Hosain'),
     subtitle: Column(
     children: [
       Text('UserName',style: TextStyle(color: Colors.grey),),
