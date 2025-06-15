@@ -13,9 +13,24 @@ class ApiClass extends StatefulWidget {
 class _ApiClassState extends State<ApiClass> {
 
   List users = [];
+  bool isloading = false;
+
+
 
   Future<void> fatchUsers()async {
-    final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/users'));
+    setState(() {
+      isloading = true;
+    });
+    final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/users'),
+        headers:{
+        'Accept' : 'application/json'
+        }
+    );
+
+
+    setState(() {
+      isloading = false;
+    });
     if(response.statusCode== 200){
       users=jsonDecode(response.body);
     }
@@ -36,7 +51,7 @@ class _ApiClassState extends State<ApiClass> {
       appBar: AppBar(
         title: Text('User list'),
       ),
-      body: ListView.builder(
+      body: isloading ? Center(child: CircularProgressIndicator()):ListView.builder(
         itemCount: users.length, // Required: how many items in the list
         itemBuilder: (context, index) {
           final user =users[index];
