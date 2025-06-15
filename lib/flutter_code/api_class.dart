@@ -43,18 +43,18 @@ class _ApiClassState extends State<ApiClass> {
           return ListTile(
             leading:CircleAvatar(
               backgroundColor:Colors.deepPurpleAccent,
-              child:Text('s',style:TextStyle(color:Colors.white,fontSize:28),),
+              child:Text(user['name'][0],style:TextStyle(color:Colors.white,fontSize:28),),
             ),
             title: Text(user['name']),
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start, // optional
-              children: const [
+              children:  [
                 SizedBox(height:10,),
-                Text('UserName', style: TextStyle(color: Colors.grey)),
-                Text('UserName', style: TextStyle(color: Colors.grey)),
-                Text('UserName', style: TextStyle(color: Colors.grey)),
-                Text('UserName', style: TextStyle(color: Colors.grey)),
-                Text('UserName', style: TextStyle(color: Colors.grey)),
+                Text('UserName :${user['username']}', style: TextStyle(color: Colors.grey)),
+                Text('Email: ${user['email']}', style: TextStyle(color: Colors.grey)),
+                Text('Phone:${user['phone']}', style: TextStyle(color: Colors.grey)),
+                Text('Website: ${user['website']}', style: TextStyle(color: Colors.grey)),
+                Text('Adress : ${user['address']['street']} ${user['address']['city']}', style: TextStyle(color: Colors.grey)),
               ],
             ),
           );
