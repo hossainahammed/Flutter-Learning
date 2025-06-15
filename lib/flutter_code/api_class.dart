@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class api_class extends StatefulWidget {
-  const api_class({super.key});
+class ApiClass extends StatefulWidget {
+  const ApiClass({super.key});
 
   @override
-  State<api_class> createState() => _api_classState();
+  State<ApiClass> createState() => _ApiClassState();
 }
 
-class _api_classState extends State<api_class> {
+class _ApiClassState extends State<ApiClass> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,24 +15,23 @@ class _api_classState extends State<api_class> {
         title: Text('User list'),
       ),
       body: ListView.builder(
-          itemBuilder: context,index){
-        return ListTile(
-        title: Text('Hossain'),
-    subtitle: Column(
-    children: [
-      Text('UserName',style: TextStyle(color: Colors.grey),),
-      Text('UserName',style: TextStyle(color: Colors.grey),),
-      Text('UserName',style: TextStyle(color: Colors.grey),),
-      Text('UserName',style: TextStyle(color: Colors.grey),),
-     Text('UserName',style: TextStyle(color: Colors.grey),),
-
-    ],
-    ),
-        );
-
-    },
-
-
+        itemCount: 10, // Required: how many items in the list
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text('Hossain'),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start, // optional
+              children: const [
+                Text('UserName', style: TextStyle(color: Colors.grey)),
+                Text('UserName', style: TextStyle(color: Colors.grey)),
+                Text('UserName', style: TextStyle(color: Colors.grey)),
+                Text('UserName', style: TextStyle(color: Colors.grey)),
+                Text('UserName', style: TextStyle(color: Colors.grey)),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }
