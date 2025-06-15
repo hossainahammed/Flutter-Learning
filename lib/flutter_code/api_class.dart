@@ -18,10 +18,15 @@ class _ApiClassState extends State<ApiClass> {
         itemCount: 10, // Required: how many items in the list
         itemBuilder: (context, index) {
           return ListTile(
+            leading:CircleAvatar(
+              backgroundColor:Colors.deepPurpleAccent,
+              child:Text('s',style:TextStyle(color:Colors.white,fontSize:28),),
+            ),
             title: Text('Hossain'),
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start, // optional
               children: const [
+                SizedBox(height:10,),
                 Text('UserName', style: TextStyle(color: Colors.grey)),
                 Text('UserName', style: TextStyle(color: Colors.grey)),
                 Text('UserName', style: TextStyle(color: Colors.grey)),
