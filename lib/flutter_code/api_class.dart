@@ -37,14 +37,15 @@ class _ApiClassState extends State<ApiClass> {
         title: Text('User list'),
       ),
       body: ListView.builder(
-        itemCount: 10, // Required: how many items in the list
+        itemCount: users.length, // Required: how many items in the list
         itemBuilder: (context, index) {
+          final user =users[index];
           return ListTile(
             leading:CircleAvatar(
               backgroundColor:Colors.deepPurpleAccent,
               child:Text('s',style:TextStyle(color:Colors.white,fontSize:28),),
             ),
-            title: Text('Hossain'),
+            title: Text(user['name']),
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start, // optional
               children: const [
