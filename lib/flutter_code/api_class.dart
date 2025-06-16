@@ -64,7 +64,7 @@ class _ApiClassState extends State<ApiClass> {
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start, // optional
               children:  [
-                SizedBox(height:10,),
+                SizedBox(height:11,),
                 Text('UserName :${user['username']}', style: TextStyle(color: Colors.grey)),
                 Text('Email: ${user['email']}', style: TextStyle(color: Colors.grey)),
                 Text('Phone:${user['phone']}', style: TextStyle(color: Colors.grey)),
