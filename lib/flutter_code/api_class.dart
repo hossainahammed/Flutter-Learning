@@ -35,7 +35,7 @@ class _ApiClassState extends State<ApiClass> {
       users=jsonDecode(response.body);
     }
     else{
-      throw Exception("Something Wrongg");
+      throw Exception("Something Wrong");
     }
   }
 @override
