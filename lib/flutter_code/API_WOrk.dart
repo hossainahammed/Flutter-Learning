@@ -10,6 +10,12 @@ class ApiWork extends StatefulWidget {
 class _ApiWorkState extends State<ApiWork> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Product Crud'),
+        backgroundColor: Colors.orange,
+        centerTitle: true,
+      ),
+    );
   }
 }
