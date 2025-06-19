@@ -27,16 +27,17 @@ class _ApiWorkState extends State<ApiWork> {
                 decoration: InputDecoration(labelText: 'Product name'),
               ),
               TextField(
-                decoration: InputDecoration(labelText: 'Product name'),
+                decoration: InputDecoration(labelText: 'productQuantity'),
               ),
               TextField(
-                decoration: InputDecoration(labelText: 'Product name'),
+                decoration: InputDecoration(labelText: 'Product Image'),
               ),
               TextField(
-                decoration: InputDecoration(labelText: 'Product name'),
+                decoration: InputDecoration(labelText: 'Product Unit Price'),
+
               ),
               TextField(
-                decoration: InputDecoration(labelText: 'Product name'),
+                decoration: InputDecoration(labelText: 'Product Totall Price'),
               ),
             ],
 
