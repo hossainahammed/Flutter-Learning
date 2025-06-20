@@ -33,7 +33,7 @@ class _ApiWorkState extends State<ApiWork> {
                 decoration: InputDecoration(labelText: 'Product Image'),
               ),
               TextField(
-                decoration: InputDecoration(labelText: 'Products Unit Price'),
+                decoration: InputDecoration(labelText: 'Product Unit Price'),
 
               ),
               TextField(
