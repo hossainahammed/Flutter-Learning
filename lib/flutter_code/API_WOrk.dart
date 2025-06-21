@@ -39,6 +39,14 @@ class _ApiWorkState extends State<ApiWork> {
               TextField(
                 decoration: InputDecoration(labelText: 'Product Totall Price'),
               ),
+              SizedBox(height: 10,),
+              Row(
+                children: [
+                  TextButton(onPressed: (){}, child: Text('Close')),
+                SizedBox(width:5),
+                ElevatedButton(onPressed: (){}, child: Text('AddProduct'),)
+                ],
+              )
             ],
 
           ),
