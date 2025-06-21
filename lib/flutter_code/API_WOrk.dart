@@ -117,6 +117,7 @@ class _ApiWorkState extends State<ApiWork> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(onPressed: (){}, icon: Icon(Icons.edit,color: Colors.orange,)),
                       SizedBox(width: 5,),
