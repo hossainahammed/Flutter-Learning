@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:if_else_statement/flutter_code/productController.dart';
 
 import 'widget/ProductCard.dart';
 
@@ -10,8 +11,36 @@ class ApiWork extends StatefulWidget {
 }
 
 class _ApiWorkState extends State<ApiWork> {
+  final Productcontroller productcontroller = Productcontroller();
+
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   setState(() {
+  //     productcontroller.fetchProducts();
+  //
+  //   });
+  //
+  // }
+
+
+  @override
+  void initState() {
+    super.initState();
+    loadProducts();
+  }
+
+  Future<void> loadProducts() async {
+    await productcontroller.fetchProducts();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
+
+
+
     void productDilouge() {
       TextEditingController productNameController = TextEditingController();
       TextEditingController productQTyController = TextEditingController();
@@ -83,11 +112,13 @@ class _ApiWorkState extends State<ApiWork> {
           // mainAxisExtent: 10,
           childAspectRatio: 0.6,
         ),
-        itemCount: 10,
+        //itemCount: 10,
+        itemCount: productcontroller.products.length,
+
         itemBuilder: (context, index) {
           return ProductCard(onEdit: () {
             productDilouge();
-          }, onDelete: () {  },);
+          }, onDelete: () {  }, product: productcontroller.products[index],);
 
         },
       ),

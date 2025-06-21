@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
+import '../models/productModel.dart';
+
 class ProductCard extends StatelessWidget {
   final VoidCallback onDelete;
   final VoidCallback onEdit;
+  final Data product;
+
+
   const ProductCard({
-    super.key,required this.onEdit,required this.onDelete
+    super.key,required this.onEdit,required this.onDelete, required this.product,
   });
 
   @override
@@ -26,13 +31,13 @@ class ProductCard extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'Product name',
+                  product.productName.toString(),
                   style: TextStyle(
                     fontSize: 16,
                     color: Colors.black54,),
                 ),
                 Text(
-                  'Price : 50 | QTY : 20',
+                  'Price : ${product.unitPrice} | QTY :  ${product.qty}',
                   style: TextStyle(
                     fontSize: 16,
                     color: Colors.black54,),
