@@ -85,7 +85,9 @@ class _ApiWorkState extends State<ApiWork> {
         ),
         itemCount: 10,
         itemBuilder: (context, index) {
-          return ProductCard();
+          return ProductCard(onEdit: () {
+            productDilouge();
+          }, onDelete: () {  },);
 
         },
       ),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
+  final VoidCallback onDelete;
+  final VoidCallback onEdit;
   const ProductCard({
-    super.key,
+    super.key,required this.onEdit,required this.onDelete
   });
 
   @override
@@ -43,9 +45,9 @@ class ProductCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(onPressed: (){}, icon: Icon(Icons.edit,color: Colors.orange,)),
+                IconButton(onPressed: onEdit, icon: Icon(Icons.edit,color: Colors.orange,)),
                 SizedBox(width: 5,),
-                IconButton(onPressed: (){}, icon: Icon(Icons.delete,color: Colors.red,)),
+                IconButton(onPressed: onDelete, icon: Icon(Icons.delete,color: Colors.red,)),
               ],
             ),
           )
