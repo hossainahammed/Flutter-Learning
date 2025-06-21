@@ -116,11 +116,20 @@ class _ApiWorkState extends State<ApiWork> {
         itemCount: productcontroller.products.length,
 
         itemBuilder: (context, index) {
-          return ProductCard(onEdit: () {
-            productDilouge();
-          }, onDelete: () {  }, product: productcontroller.products[index],);
-
+          var product = productcontroller.products[index];
+          return ProductCard(
+            onEdit: () {
+              productDilouge();
+            },
+            onDelete: () {
+              productcontroller.DeleteProducts(product.sId.toString()).then((value) {
+                loadProducts(); // refresh after deletion
+              });
+            },
+            product: product,
+          );
         },
+
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => productDilouge(),
