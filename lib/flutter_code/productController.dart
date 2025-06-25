@@ -11,7 +11,7 @@ class Productcontroller {
     print(response.statusCode);
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      ProductModel model = ProductModel.fromJson(data); // ✅ Fix here
+      ProductModel model = ProductModel.fromJson(data);
       products = model.data ?? [];
     }
   }
@@ -28,6 +28,7 @@ class Productcontroller {
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({
         "ProductName": name,
+        "ProductCode": DateTime.now().microsecondsSinceEpoch,
         "Img": image,
         "Qty": qty,
         "UnitPrice": unitPrice,
@@ -35,12 +36,13 @@ class Productcontroller {
       }),
     );
 
-    if (response.statusCode == 200) {
-      await fetchProducts(); // Wait to fetch updated list
+    if (response.statusCode == 201) {
+      await fetchProducts();
     } else {
       throw Exception("Failed to create product");
     }
   }
+
 
   Future<void> updateProduct({
     required String id,
@@ -51,7 +53,7 @@ class Productcontroller {
     required int totalPrice,
   }) async {
     final response = await http.put(
-        Uri.parse(Urls.updateProduct(id)), // ← fix your URL endpoint
+        Uri.parse(Urls.updateProduct(id)),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({
         "ProductName": name,
@@ -69,6 +71,8 @@ class Productcontroller {
       print(" Failed to update product");
     }
   }
+
+
 
   Future<bool> DeleteProducts(String productId) async {
     final response = await http.get(Uri.parse(Urls.deleteProduct(productId)));

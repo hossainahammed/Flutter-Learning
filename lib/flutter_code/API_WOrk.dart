@@ -162,11 +162,11 @@ class _ApiWorkState extends State<ApiWork> {
                           await productcontroller.createProduct(
                             name: productNameController.text,
                             image: productImageController.text,
-                            qty: int.tryParse(productQtyController.text) ?? 0,
+                            qty: int.parse(productQtyController.text.trim()) ?? 0,
                             unitPrice:
-                            int.tryParse(productUnitPriceController.text) ?? 0,
+                            int.parse(productUnitPriceController.text.trim()) ?? 0,
                             totalPrice:
-                            int.tryParse(productTotalPriceController.text) ?? 0,
+                            int.parse(productTotalPriceController.text.trim()) ?? 0,
                           );
                         } else {
                           // EDIT (Update)
@@ -174,11 +174,11 @@ class _ApiWorkState extends State<ApiWork> {
                             id: product.sId!,
                             name: productNameController.text,
                             image: productImageController.text,
-                            qty: int.tryParse(productQtyController.text) ?? 0,
+                            qty: int.parse(productQtyController.text.trim()) ?? 0,
                             unitPrice:
-                            int.tryParse(productUnitPriceController.text) ?? 0,
+                            int.parse(productUnitPriceController.text.trim()) ?? 0,
                             totalPrice:
-                            int.tryParse(productTotalPriceController.text) ?? 0,
+                            int.parse(productTotalPriceController.text.trim()) ?? 0,
                           );
                         }
 
