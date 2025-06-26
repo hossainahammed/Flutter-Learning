@@ -44,7 +44,7 @@ class Productcontroller {
   }
 
 
-  Future<void> updateProduct({
+  Future<bool> updateProduct({
     required String id,
     required String name,
     required String image,
@@ -52,23 +52,42 @@ class Productcontroller {
     required int unitPrice,
     required int totalPrice,
   }) async {
-    final response = await http.put(
-        Uri.parse(Urls.updateProduct(id)),
-      headers: {'Content-Type': 'application/json'},
-      body: jsonEncode({
+    try {
+      final url = Urls.updateProduct(id);
+      final requestBody = {
         "ProductName": name,
+        "ProductCode": DateTime.now().microsecondsSinceEpoch.toString(), // If backend expects this to update
         "Img": image,
         "Qty": qty,
         "UnitPrice": unitPrice,
         "TotalPrice": totalPrice,
-      }),
-    );
+      };
 
-    if (response.statusCode == 200) {
-      print(" Product updated");
-      await fetchProducts();
-    } else {
-      print(" Failed to update product");
+      print("🔗 Update URL: $url");
+      print("🔢 Product ID for Update: $id");
+      print("📤 Sending Update Request Body: ${jsonEncode(requestBody)}");
+
+
+      final response = await http.put(
+        Uri.parse(url),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode(requestBody),
+      );
+
+      print("📥 Status: ${response.statusCode}");
+      print("📦 Response: ${response.body}");
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        print("✅ Product updated successfully!");
+        await fetchProducts(); // Refresh products after update
+        return true;
+      } else {
+        print("❌ Update failed! Status: ${response.statusCode}, Body: ${response.body}");
+        return false;
+      }
+    } catch (e) {
+      print("Error updating product: $e");
+      return false;
     }
   }
 

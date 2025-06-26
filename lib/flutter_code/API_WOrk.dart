@@ -168,7 +168,9 @@ class _ApiWorkState extends State<ApiWork> {
                             totalPrice:
                             int.parse(productTotalPriceController.text.trim()) ?? 0,
                           );
-                        } else {
+
+                        }
+                        else {
                           // EDIT (Update)
                           await productcontroller.updateProduct(
                             id: product.sId!,
@@ -180,9 +182,10 @@ class _ApiWorkState extends State<ApiWork> {
                             totalPrice:
                             int.parse(productTotalPriceController.text.trim()) ?? 0,
                           );
+                          Navigator.pop(context);
                         }
 
-                        Navigator.pop(context);
+                       // Navigator.pop(context);
                         await loadProducts();  // Refresh grid
                       },
                       child: Text(product == null ? 'Add Product' : 'Update Product'),
@@ -229,10 +232,7 @@ class _ApiWorkState extends State<ApiWork> {
         child: Icon(Icons.add),
       ),
 
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () => productDilouge(),
-      //   child: Icon(Icons.add),
-      // ),
+
     );
   }
 }
