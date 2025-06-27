@@ -206,7 +206,7 @@ class _ApiWorkState extends State<ApiWork> {
         centerTitle: true,
       ),
       body: productcontroller.products.isEmpty
-          ? Center(child: Text('No products availablee'))
+          ? Center(child: Text('No products available'))
           : GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
