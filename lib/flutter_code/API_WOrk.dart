@@ -202,7 +202,8 @@ class _ApiWorkState extends State<ApiWork> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Product Crudd'),
-        backgroundColor: Colors.orange,
+        // backgroundColor: Colors.orange,
+        backgroundColor: Colors.pinkAccent,
         centerTitle: true,
       ),
       body: productcontroller.products.isEmpty
